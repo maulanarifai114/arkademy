@@ -16,65 +16,69 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="../../z.ico">
     <title>Login</title>
 </head>
 
 <body>
 
-    <div class="container-fluid">
+    <section class="container-fluid">
         <div class="row">
             <!-- Mask Sidebar -->
-            <div class="mask primary-z col-xl-7 col-lg-6 col-md-4 col-sm-12 ">
+            <aside class="mask primary-z col-xl-7 col-lg-6 col-md-4 col-sm-12 ">
                 <h1 class="title">Zwallet</h1>
                 <div class="phone">
                     <img src="./img/phone1.png" alt="phone-1" class="phone-1">
                     <img src="./img/phone2.png" alt="phone-2" class="phone-2">
                 </div>
                 <div class="mask-paragraph">
-                    <div class="mask-p1">
+                    <h4 class="mask-p1">
                         App that Covering Banking Needs.
-                    </div>
-                    <div class="mask-p2">
+                    </h4>
+                    <h6 class="mask-p2">
                         Zwallet is an application that focussing in banking needs for all users
                         in the world. Always updated and always following world trends.
                         5000+ users registered in Zwallet everyday with worldwide
                         users coverage.
-                    </div>
+                    </h6>
                 </div>
-            </div>
+            </aside>
             <!-- End Mask Sidebar -->
 
             <!-- Login Sidebar -->
-            <div class="login white-z col-xl-5 col-lg-6 col-md-8 col-sm-12">
-                <h2 class="login-p1">
-                    Start Accessing Banking Needs <br>
-                    With All Devices and All Platforms <br>
-                    With 30.000+ Users
-                </h2>
-                <p class="login-p2">
-                    Transfering money is eassier than ever, you can access <br>
-                    Zwallet wherever you are. Desktop, laptop, mobile phone? <br>
-                    we cover all of that for you!
-                </p>
-                <div class="login-email">
-                    <img src="./img/mail-error.svg" alt="" class="login-icon">
-                    <input type="email" class="form-email" placeholder="Enter your e-mail">
-                </div>
-                <div class="login-pass">
-                    <img src="./img/lock-error.svg" alt="" class="login-icon">
-                    <input type="password" class="form-pass" placeholder="Enter your password">
-                    <img src="./img/eye-crossed.svg" alt="" class="login-icon-eye">
-                </div>
+            <main class="login white-z col-xl-5 col-lg-6 col-md-8 col-sm-12">
+                <header>
+                    <h2 class="login-p1">
+                        Start Accessing Banking Needs <br>
+                        With All Devices and All Platforms <br>
+                        With 30.000+ Users
+                    </h2>
+                    <p class="login-p2">
+                        Transfering money is eassier than ever, you can access <br>
+                        Zwallet wherever you are. Desktop, laptop, mobile phone? <br>
+                        we cover all of that for you!
+                    </p>
+                </header>
+                <form>
+                    <label class="login-email" for="email">
+                        <img src="./img/mail-error.svg" alt="" class="login-icon">
+                        <input type="email" class="form-email" placeholder="Enter your e-mail" id="email">
+                    </label>
+                    <label class="login-pass" for="password">
+                        <img src="./img/lock-error.svg" alt="" class="login-icon">
+                        <input type="password" class="form-pass" placeholder="Enter your password" id="password">
+                        <img src="./img/eye-crossed.svg" alt="" class="login-icon-eye">
+                    </label>
+                </form>
                 <a href="#" class="forgot">Forgot password</a>
-                <p class="invalid">Email or Password Invalid</p>
                 <button type="submit" class="login-btn">Login</button>
-                <div class="sign-up">
+                <p class="sign-up">
                     Don’t have an account? Let’s<a href="#"> Sign Up</a>
-                </div>
-            </div>
+                </p>
+            </main>
             <!-- End Login Sidebar -->
         </div>
-    </div>
+    </section>
 
 
 
