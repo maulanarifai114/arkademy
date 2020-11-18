@@ -1,11 +1,12 @@
-require('dotenv').config();
-const express = require('express');
-const morgan = require('morgan');
-const app = express();
-const router = express.Router();
-const PORT = 4000;
-const routerUsers = require('./src/routers/users');
-const routerProducts = require('./src/routers/products');
+require('dotenv').config()
+const express = require('express')
+const morgan = require('morgan')
+const app = express()
+const router = express.Router()
+const PORT = process.env.PORT
+const routerUsers = require('./src/routers/users')
+const routerProducts = require('./src/routers/products')
+const bodyParser = require('body-parser')
 
 // membuat middleware
 const mymiddleware = (req, res, next) => {
@@ -46,8 +47,7 @@ router.post('/login', (req, res) => {
     res.send('ini router login')
 })
 
-// menggunakan router
-app.use('/users', routerUsers);
-app.use('/products', routerProducts);
+// menenggukan router
+app.use('/users', routerUsers)
+app.use('/products', routerProducts)
 
-app.listen(PORT, () => console.log(`server is running in port ${PORT}`))
