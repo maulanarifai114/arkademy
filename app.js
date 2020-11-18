@@ -1,16 +1,28 @@
-require('dotenv').config()
+require('dotenv').config();
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const router = express.Router();
 const PORT = 4000;
+const routerUsers = require('./src/routers/users');
+const routerProducts = require('./src/routers/products');
 
-app.use(morgan('dev'));
-
+// membuat middleware
 const mymiddleware = (req, res, next) => {
     console.log('ini middleware');
     next();
 }
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({
+    extended: false
+}))
+
+// parse application/json
+app.use(bodyParser.json())
+
+// add morgan
+app.use(morgan('dev'));
 
 app.use(mymiddleware);
 
@@ -34,10 +46,8 @@ router.post('/login', (req, res) => {
     res.send('ini router login')
 })
 
-app.use('/users', router)
-
-app.get('/product', (req, res) => {
-    res.send('hello');
-});
+// menggunakan router
+app.use('/users', routerUsers);
+app.use('/products', routerProducts);
 
 app.listen(PORT, () => console.log(`server is running in port ${PORT}`))
