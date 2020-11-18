@@ -1,8 +1,8 @@
+require('dotenv').config()
 const express = require('express');
 const morgan = require('morgan');
 const app = express();
 const router = express.Router();
-
 const PORT = 4000;
 
 app.use(morgan('dev'));
@@ -37,7 +37,7 @@ router.post('/login', (req, res) => {
 app.use('/users', router)
 
 app.get('/product', (req, res) => {
-    res.send('helloww');
+    res.send('hello');
 });
 
 app.listen(PORT, () => console.log(`server is running in port ${PORT}`))
