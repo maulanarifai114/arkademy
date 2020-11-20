@@ -7,6 +7,5 @@ module.exports = {
         resultPrint.err = err || null
         res.status(status)
         res.json(resultPrint)
-    },
-
+    }
 }
