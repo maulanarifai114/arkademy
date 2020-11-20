@@ -62,6 +62,7 @@ const users = {
 			password,
 			balance
 		}
+		console.log(data);
 		modelUser.updateUser(id, data)
 			.then((result) => {
 				res.json(result)
@@ -86,7 +87,24 @@ const users = {
 }
 module.exports = users;
 
-
+// if (name != "") {
+// 	data.name
+// }
+// if (phone != "") {
+// 	data.phone
+// }
+// if (username != "") {
+// 	data.username
+// }
+// if (email != "") {
+// 	data.email
+// }
+// if (password != "") {
+// 	data.password
+// }
+// if (balance != 0) {
+// 	data.balance
+// }
 
 
 

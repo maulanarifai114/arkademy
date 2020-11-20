@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const app = express()
 const PORT = process.env.PORT
 const routerUsers = require('./src/routes/users')
+const routerTransaction = require('./src/routes/transaction')
 const bodyParser = require('body-parser')
 
 // membuat middleware
@@ -28,5 +29,6 @@ app.use(mymiddleware)
 
 // menggunakan router
 app.use('/users', routerUsers)
+app.use('/transaction', routerTransaction)
 
 app.listen(PORT, () => console.log(`server is running port ${PORT}`))
