@@ -1,5 +1,5 @@
 const modelUser = require('../models/users')
-
+const helper = require('../helpers/help')
 const users = {
 
 	// getAllUsers, getUserByName, getUserByPhone
@@ -9,7 +9,7 @@ const users = {
 		modelUser.getAllUsers(name, phone)
 			.then(result => {
 				const resultAllUsers = result
-				res.json(resultAllUsers)
+				helper.response(res, resultAllUsers, 200, null)
 			})
 			.catch((err) => {
 				console.log(err)
