@@ -12,8 +12,8 @@ const helper = require('./src/helpers/help')
 
 // membuat middleware
 const mymiddleware = (req, res, next) => {
-	console.log('menjalankan my middleware')
-	next()
+  console.log('menjalankan my middleware')
+  next()
 }
 
 // Enable CORS
@@ -21,7 +21,7 @@ app.use(cors())
 
 // parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({
-	extended: false
+  extended: false
 }))
 
 // parse application/json
@@ -39,12 +39,12 @@ app.use('/users', routerUsers)
 app.use('/transaction', routerTransaction)
 
 app.use('*', (req, res) => {
-	helper.reject(res, null, 404, {
-		message: 'URL Not Found'
-	})
+  helper.reject(res, null, 404, {
+    message: 'URL Not Found'
+  })
 })
 
 app.listen(PORT, function () {
-	console.log(`CORS-enabled web server listening on port ${PORT}`)
+  console.log(`CORS-enabled web server listening on port ${PORT}`)
 })
 // app.listen(PORT, () => console.log(`server is running in port ${PORT}`))
