@@ -4,8 +4,8 @@ const users = {
 
   // getAllUsers, getUserByName, getUserByPhone
   getAllUsers: (req, res) => {
-    const name = req.query.name || null
-    const phone = req.query.phone || null
+    const name = req.query.name
+    const phone = req.query.phone
     const page = req.query.page
     const limit = req.query.limit
     const offset = (page - 1) * limit
@@ -17,9 +17,17 @@ const users = {
           helper.reject(res, resultAllUsers, 404, {
             message: 'name not found'
           })
+        } else if (name == '') {
+          helper.reject(res, [], 404, {
+            message: 'type name first'
+          })
         } else if (resultAllUsers.length == 0 && phone) {
           helper.reject(res, resultAllUsers, 404, {
             message: 'phone not found'
+          })
+        } else if (name == '') {
+          helper.reject(res, [], 404, {
+            message: 'type phone first'
           })
         } else if (resultAllUsers.length == 0) {
           helper.reject(res, resultAllUsers, 404, {
@@ -55,7 +63,7 @@ const users = {
 
     if (data.name == '' || data.phone == '' || data.username == '' || data.email == '' || data.password == '' || data.balance == '') {
       return helper.reject(res, data, 400, {
-        message: 'can\'t add data, some or all data is empty'
+        message: `can't add data, some or all data is empty`
       })
     }
 
