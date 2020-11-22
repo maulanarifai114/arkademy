@@ -25,9 +25,9 @@ const users = {
           helper.reject(res, resultAllUsers, 404, {
             message: 'phone not found'
           })
-        } else if (name == '') {
+        } else if (phone == '') {
           helper.reject(res, [], 404, {
-            message: 'type phone first'
+            message: 'type phone number first'
           })
         } else if (resultAllUsers.length == 0) {
           helper.reject(res, resultAllUsers, 404, {
@@ -69,7 +69,7 @@ const users = {
 
     modelUser.insertUser(data)
       .then(result => {
-        const resultInsertUser = result
+        // const resultInsertUser = result
         helper.response(res, {
           message: 'success add data'
         }, 200, null)
