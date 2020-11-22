@@ -4,7 +4,6 @@ const transControl = require('../controllers/transaction')
 
 router
     .get('/', transControl.getAllTrans)
-// .post('/', transControl.insertUser)
-// .put('/:id', transControl.updateUser)
-// .delete('/:id', transControl.deleteUser)
+    .post('/', transControl.insertTrans)
+    .delete('/:id', transControl.deleteTrans)
 module.exports = router
