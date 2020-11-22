@@ -45,7 +45,6 @@ const trans = {
 
     transModel.insertTransaction(data)
       .then(result => {
-        const resultInsertTrans = result
         helper.response(res, {
           message: 'success transfer'
         }, 200, null)
