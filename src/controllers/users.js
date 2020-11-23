@@ -9,7 +9,6 @@ const users = {
     const page = req.query.page
     const limit = req.query.limit
     const offset = (page - 1) * limit
-    // const kelas = req.query.kelas
     modelUser.getAllUsers(name, phone, offset, limit)
       .then(result => {
         const resultAllUsers = result

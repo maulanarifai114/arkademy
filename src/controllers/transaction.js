@@ -6,7 +6,8 @@ const trans = {
   // get All Transaction
   getAllTrans: (req, res) => {
     // res.send(`berhasil get`)
-    transModel.getTransaction()
+    const id = req.query.id
+    transModel.getTransaction(id)
       .then(result => {
         const resultAllUsers = result
         if (resultAllUsers.length == 0) {
