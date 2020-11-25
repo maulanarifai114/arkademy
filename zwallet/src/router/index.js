@@ -11,6 +11,7 @@ const routes = [
   {
     path: '/',
     name: 'Auth',
+    // redirect: '/signup',
     component: Auth
   },
   {
