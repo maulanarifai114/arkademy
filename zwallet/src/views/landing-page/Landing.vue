@@ -16,8 +16,11 @@ export default {
 </script>
 
 <style scoped>
+.btn {
+  border: 0;
+}
 .inibutton {
-    border-radius: 20px !important;
+    border-radius: 20px;
     background-color: rgb(255, 133, 133);
 }
 </style>
