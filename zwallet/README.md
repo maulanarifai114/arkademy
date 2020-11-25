@@ -1,4 +1,4 @@
-# zwallet
+# Zwallet
 
 ## Project setup
 ```
