@@ -6,12 +6,17 @@
         <router-link to="/signup">
             <button class="btn btn-primary">Ini SignUp</button>
         </router-link>
+        <Button title="Login"/>
     </div>
 </template>
 
 <script>
+import Button from '../../components/Button'
 export default {
-  name: 'Landing'
+  name: 'Landing',
+  components: [
+    Button
+  ]
 }
 </script>
 
