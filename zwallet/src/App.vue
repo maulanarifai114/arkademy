@@ -1,17 +1,13 @@
 <template>
   <div id="app">
-    <Auth />
+    <router-view/>
   </div>
 </template>
 
 <script>
-import Auth from './views/auth/Auth'
 
 export default {
-  name: 'app',
-  components: {
-    Auth
-  }
+  name: 'app'
 }
 
 </script>

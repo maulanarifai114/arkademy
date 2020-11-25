@@ -1,6 +1,9 @@
 <template>
   <div>
     <h2>{{ email }}</h2>
+    <router-link to="/home">
+      <button class="btn btn-primary">Home</button>
+    </router-link>
   </div>
 </template>
 
