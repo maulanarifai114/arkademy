@@ -9,7 +9,7 @@ export default {
   name: 'SignUp',
   data: function () {
     return {
-      password: 'hehe'
+      password: 'Ini SignUp'
     }
   }
 }
