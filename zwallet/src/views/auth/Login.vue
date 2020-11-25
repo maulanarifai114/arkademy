@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>{{ email }}</h2>
+    <h1>{{ email }}</h1>
   </div>
 </template>
 
@@ -9,8 +9,7 @@ export default {
   name: 'Login',
   data: function () {
     return {
-      email: ''
-
+      email: 'maulana'
     }
   }
 }
