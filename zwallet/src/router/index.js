@@ -4,7 +4,7 @@ import SignUp from '../views/auth-view/Signup.vue'
 import Login from '../views/auth-view/Login.vue'
 import Landing from '../views/landing-page/Landing.vue'
 import Home from '../views/main/Home.vue'
-
+// import MainAuth from '../views/'
 Vue.use(VueRouter)
 
 const routes = [
