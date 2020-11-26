@@ -4,7 +4,7 @@ import SignUp from '../views/auth-view/Signup.vue'
 import Login from '../views/auth-view/Login.vue'
 import Landing from '../views/landing-page/Landing.vue'
 import Home from '../views/main/Home.vue'
-// import MainAuth from '../views/'
+import Auth from '../views/auth/Main.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -23,6 +23,11 @@ const routes = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: Auth
   },
   {
     path: '/home',
