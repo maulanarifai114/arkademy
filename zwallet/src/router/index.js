@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import SignUp from '../views/auth-view/Signup.vue'
-import Login from '../views/auth-view/Login.vue'
+import SignUp from '../views/auth/auth-views/Signup.vue'
+import Login from '../views/auth/auth-views/Login.vue'
 import Landing from '../views/landing-page/Landing.vue'
 import Home from '../views/main/Home.vue'
-import Auth from '../views/auth/Main.vue'
+import Auth from '../views/auth/Auth.vue'
 Vue.use(VueRouter)
 
 const routes = [

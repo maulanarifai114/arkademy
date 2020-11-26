@@ -10,6 +10,7 @@
 import Navbar from '../../components/landing/Navbar'
 import Body from '../../components/landing/Body'
 import Footer from '../../components/landing/Footer'
+
 export default {
   name: 'Landing',
   components: {
