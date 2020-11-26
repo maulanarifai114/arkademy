@@ -44,7 +44,7 @@
             </div>
         </label>
     </form>
-    <router-link to="/home">
+    <router-link to="/auth/pinsuccess">
       <button type="submit" class="login-btn">Confirm</button>
     </router-link>
   </div>
