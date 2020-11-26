@@ -9,6 +9,7 @@ import PinAuth from '../views/auth/Pin.vue'
 import Reset from '../views/auth/ResetTypeEmail.vue'
 import NewPass from '../views/auth/NewPass.vue'
 import PinSuccess from '../views/auth/PinSuccess.vue'
+import Dashboard from '../views/main/Dashboard.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -59,7 +60,14 @@ const routes = [
   {
     path: '/home',
     name: 'Home',
-    component: Home
+    component: Home,
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: Dashboard
+      }
+    ]
   }
 
 ]
