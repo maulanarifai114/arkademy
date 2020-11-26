@@ -23,7 +23,7 @@
           <img src="../../assets/auth/eye-crossed.svg" alt="" class="login-icon-eye">
       </label>
     </form>
-    <a href="#" class="forgot">Forgot password</a>
+    <router-link to="/auth/reset" class="forgot">Forgot password</router-link>
     <router-link to="/home">
     <button type="submit" class="login-btn">Login</button>
     </router-link>
