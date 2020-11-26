@@ -6,7 +6,7 @@ import Landing from '../views/landing-page/Landing.vue'
 import Home from '../views/main/Home.vue'
 import Auth from '../views/auth/Auth.vue'
 import PinAuth from '../views/auth/Pin.vue'
-import Reset from '../views/auth/Reset.vue'
+import Reset from '../views/auth/ResetTypeEmail.vue'
 Vue.use(VueRouter)
 
 const routes = [
