@@ -8,15 +8,15 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ml-auto mr-lg-5 mb-3">
+                <ul class="navbar-nav ml-auto d-flex align-items-center">
+                    <li class="nav-item ml-auto mr-lg-5 mb-3 mb-lg-0 my-lg-5">
                       <router-link to="/login">
                         <ButtonOutline title="Login"/>
                       </router-link>
                     </li>
                     <li class="nav-item ml-auto">
                       <router-link to="/signup">
-                        <ButtonSolid title="Sign Up"/>
+                        <ButtonSolid title="Sign up"/>
                       </router-link>
                     </li>
                 </ul>
