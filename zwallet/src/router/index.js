@@ -15,19 +15,21 @@ const routes = [
     component: Landing
   },
   {
-    path: '/signup',
-    name: 'SignUp',
-    component: SignUp
-  },
-  {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
     path: '/auth',
     name: 'Auth',
-    component: Auth
+    component: Auth,
+    children: [
+      {
+        path: 'signup',
+        name: 'SignUp',
+        component: SignUp
+      },
+      {
+        path: 'login',
+        name: 'Login',
+        component: Login
+      }
+    ]
   },
   {
     path: '/home',

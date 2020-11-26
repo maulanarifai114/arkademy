@@ -10,12 +10,12 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
                     <li class="nav-item ml-auto mr-lg-5 mb-3 mb-lg-0 my-lg-3">
-                      <router-link to="/login">
+                      <router-link to="/auth/login">
                         <ButtonOutline title="Login"/>
                       </router-link>
                     </li>
                     <li class="nav-item ml-auto mb-2 mb-lg-0">
-                      <router-link to="/signup">
+                      <router-link to="/auth/signup">
                         <ButtonSolid title="Sign up"/>
                       </router-link>
                     </li>
