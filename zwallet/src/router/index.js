@@ -22,6 +22,7 @@ const routes = [
     path: '/auth',
     name: 'Auth',
     component: Auth,
+    redirect: '/auth/signup',
     children: [
       {
         path: 'signup',
