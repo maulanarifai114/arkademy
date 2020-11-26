@@ -14,12 +14,11 @@
 </template>
 
 <script>
-import Navbar from '../../components/Navbar'
-import Button from '../../components/Button'
+import Navbar from '../../components/landing/Navbar'
+
 export default {
   name: 'Landing',
   components: {
-    Button,
     Navbar
   }
 }
