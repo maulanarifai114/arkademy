@@ -6,7 +6,9 @@
         <router-link to="/signup">
             <button class="btn btn-primary">Ini SignUp</button>
         </router-link>
+        <router-link to="/home">
         <Button title="Login"/>
+        </router-link>
     </div>
 </template>
 
@@ -14,13 +16,14 @@
 import Button from '../../components/Button'
 export default {
   name: 'Landing',
-  components: [
+  components: {
     Button
-  ]
+  }
 }
 </script>
 
 <style scoped>
+
 .btn {
   border: 0;
 }
