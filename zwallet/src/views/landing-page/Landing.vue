@@ -1,6 +1,6 @@
 <template>
     <div id="landing">
-        <router-link to="/login">
+        <!-- <router-link to="/login">
             <button class="btn btn-primary inibutton">Ini Login</button>
         </router-link>
         <router-link to="/signup">
@@ -8,16 +8,19 @@
         </router-link>
         <router-link to="/home">
         <Button title="Login"/>
-        </router-link>
+        </router-link> -->
+        <Navbar/>
     </div>
 </template>
 
 <script>
+import Navbar from '../../components/Navbar'
 import Button from '../../components/Button'
 export default {
   name: 'Landing',
   components: {
-    Button
+    Button,
+    Navbar
   }
 }
 </script>
