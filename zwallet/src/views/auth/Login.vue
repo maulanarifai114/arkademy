@@ -26,7 +26,7 @@
     <a href="#" class="forgot">Forgot password</a>
     <button type="submit" class="login-btn">Login</button>
     <p class="sign-up">
-        Don’t have an account? Let’s<a href="#"> Sign Up</a>
+        Don’t have an account? Let’s<router-link to="/auth/signup"> Sign Up</router-link>
     </p>
   </div>
 </template>
@@ -185,7 +185,7 @@ input {
 /* Login Button */
 .login-btn {
     border-radius: 12px;
-    background-color: rgba(99, 121, 244, 0.8);
+    background-color: #6379f4;
     color: #ffffff;
     border: 0;
     outline: 0;
@@ -201,7 +201,9 @@ input {
     text-align: center;
     transition: .3s;
 }
-
+.login-btn:hover {
+  background-color: rgba(99, 121, 244, 0.8);
+}
 .login-btn:focus {
     outline: 0;
     border: 0;
