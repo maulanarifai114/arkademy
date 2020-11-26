@@ -5,6 +5,7 @@ import Login from '../views/auth/Login.vue'
 import Landing from '../views/landing-page/Landing.vue'
 import Home from '../views/main/Home.vue'
 import Auth from '../views/auth/Auth.vue'
+import PinAuth from '../views/auth/Pin.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -28,6 +29,11 @@ const routes = [
         path: 'login',
         name: 'Login',
         component: Login
+      },
+      {
+        path: 'pin',
+        name: 'PinAuth',
+        component: PinAuth
       }
     ]
   },

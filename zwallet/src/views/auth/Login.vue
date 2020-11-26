@@ -24,7 +24,9 @@
       </label>
     </form>
     <a href="#" class="forgot">Forgot password</a>
+    <router-link to="/home">
     <button type="submit" class="login-btn">Login</button>
+    </router-link>
     <p class="sign-up">
         Don’t have an account? Let’s<router-link to="/auth/signup"> Sign Up</router-link>
     </p>
@@ -184,6 +186,7 @@ input {
 
 /* Login Button */
 .login-btn {
+    margin: 90px 0 0 0;
     border-radius: 12px;
     background-color: #6379f4;
     color: #ffffff;

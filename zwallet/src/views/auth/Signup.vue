@@ -27,7 +27,9 @@
           <img src="../../assets/auth/eye-crossed.svg" alt="" class="login-icon-eye">
       </label>
     </form>
-  <button type="submit" class="login-btn">Sign Up</button>
+  <router-link to="/home">
+    <button type="submit" class="login-btn">Sign Up</button>
+    </router-link>
   <p class="sign-up">
       <!-- Already have an account? Let’s <a href="#"> Login</a> -->
       Already have an account? Let’s <router-link to="/auth/login">Login</router-link>
