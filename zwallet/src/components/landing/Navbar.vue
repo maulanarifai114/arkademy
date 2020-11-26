@@ -9,11 +9,15 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item ml-auto mr-5">
+                    <li class="nav-item ml-auto mr-lg-5 mb-3">
+                      <router-link to="/login">
                         <ButtonOutline title="Login"/>
+                      </router-link>
                     </li>
                     <li class="nav-item ml-auto">
+                      <router-link to="/signup">
                         <ButtonSolid title="Sign Up"/>
+                      </router-link>
                     </li>
                 </ul>
             </div>
@@ -36,11 +40,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-body {
-    font-family: 'Nunito Sans';
-    background: #FAFCFF;
-    /* background: #a8c6f3; */
-}
 
 a {
     transition: .3s;
