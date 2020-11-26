@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style>
+<style >
 body {
     font-family: 'Nunito Sans';
     background: #FAFCFF !important;

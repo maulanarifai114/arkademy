@@ -2,19 +2,19 @@
     <div>
       <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand my-4" href="#">Zwallet</a>
+            <a class="navbar-brand my-3" href="#">Zwallet</a>
             <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto d-flex align-items-center">
-                    <li class="nav-item ml-auto mr-lg-5 mb-3 mb-lg-0 my-lg-5">
+                    <li class="nav-item ml-auto mr-lg-5 mb-3 mb-lg-0 my-lg-3">
                       <router-link to="/login">
                         <ButtonOutline title="Login"/>
                       </router-link>
                     </li>
-                    <li class="nav-item ml-auto">
+                    <li class="nav-item ml-auto mb-2 mb-lg-0">
                       <router-link to="/signup">
                         <ButtonSolid title="Sign up"/>
                       </router-link>
@@ -40,7 +40,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+nav {
+  background: #FAFCFF !important;
+}
 a {
     transition: .3s;
 }
