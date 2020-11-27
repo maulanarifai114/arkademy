@@ -15,6 +15,7 @@
 import Navbar from '../../components/main/Navbar'
 import Sidebar from '../../components/main/Sidebar'
 import Footer from '../../components/main/Footer'
+
 export default {
   name: 'Home',
   components: {

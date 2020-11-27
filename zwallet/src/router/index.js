@@ -10,6 +10,9 @@ import Reset from '../views/auth/ResetTypeEmail.vue'
 import NewPass from '../views/auth/NewPass.vue'
 import PinSuccess from '../views/auth/PinSuccess.vue'
 import Dashboard from '../views/main/Dashboard.vue'
+import Profile from '../views/main/Profile.vue'
+import Transfer from '../views/main/Transfer.vue'
+import Topup from '../views/main/Topup.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -66,6 +69,21 @@ const routes = [
         path: 'dashboard',
         name: 'Dashboard',
         component: Dashboard
+      },
+      {
+        path: 'transfer',
+        name: 'Transfer',
+        component: Transfer
+      },
+      {
+        path: 'topup',
+        name: 'Topup',
+        component: Topup
+      },
+      {
+        path: 'profile',
+        name: 'Profile',
+        component: Profile
       }
     ]
   }
