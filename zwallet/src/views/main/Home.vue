@@ -1,8 +1,9 @@
 <template>
     <div id="home">
       <Navbar/>
-        <div class="coba2 container"></div>
-
+        <div class="container-fluid">
+          <div class="container"></div>
+        </div>
       <Footer/>
     </div>
 </template>
@@ -21,17 +22,17 @@ export default {
 
 <style lang="scss" scoped>
 
-.coba1 {
-  padding: 0;
+.container-fluid {
   margin: 180px 0 0 0;
+  padding: 0;
+  height: fit-content;
+  // width: 100%;
+  background-color: rgb(132, 248, 116);
+}
+.container {
+  padding: 0;
   height: 678px;
   width: 100%;
-  background-color: rgb(248, 116, 116);
-}
-.coba2 {
-  padding: 0;
-  height: 200px;
-  width: 100%;
-  background-color: rgb(132, 248, 116);
+  background-color: rgb(248, 224, 116);
 }
 </style>
