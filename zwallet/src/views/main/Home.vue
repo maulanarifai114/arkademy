@@ -1,35 +1,37 @@
 <template>
     <div id="home">
       <Navbar/>
-      <!-- <section class="container-lg row-dashboard">
-        <div class="row row-default">
-          <Sidebar/>
-          <router-view></router-view>
-        </div>
-      </section> -->
+        <div class="coba2 container"></div>
+
+      <Footer/>
     </div>
 </template>
 
 <script>
 import Navbar from '../../components/main/Navbar'
-// import Sidebar from '../../components/main/Sidebar'
+import Footer from '../../components/main/Footer'
 export default {
   name: 'Home',
   components: {
-    Navbar
-    // Sidebar
+    Navbar,
+    Footer
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.row-dashboard {
-    padding: 0;
-    margin-top: 180px;
-    margin-bottom: 35px;
+
+.coba1 {
+  padding: 0;
+  margin: 180px 0 0 0;
+  height: 678px;
+  width: 100%;
+  background-color: rgb(248, 116, 116);
 }
-.row-default {
-    margin: 0;
-    width: 100%;
+.coba2 {
+  padding: 0;
+  height: 200px;
+  width: 100%;
+  background-color: rgb(132, 248, 116);
 }
 </style>
