@@ -1,8 +1,11 @@
 <template>
-    <div id="home">
+    <div id="home" class="padding-180">
       <Navbar/>
-        <div class="container-fluid">
-          <div class="container"></div>
+        <div class="container-lg d-flex flex-row mb-5">
+          <Sidebar/>
+          <div class="col-12 col-lg-9">
+            <router-view></router-view>
+          </div>
         </div>
       <Footer/>
     </div>
@@ -10,11 +13,13 @@
 
 <script>
 import Navbar from '../../components/main/Navbar'
+import Sidebar from '../../components/main/Sidebar'
 import Footer from '../../components/main/Footer'
 export default {
   name: 'Home',
   components: {
     Navbar,
+    Sidebar,
     Footer
   }
 }
@@ -22,17 +27,27 @@ export default {
 
 <style lang="scss" scoped>
 
+.padding-180 {
+  padding: 180px 0 0 0;
+}
+
 .container-fluid {
-  margin: 180px 0 0 0;
+  margin-top: 180px;
+  margin-right: auto;
+  margin-left: auto;
   padding: 0;
   height: fit-content;
   // width: 100%;
   background-color: rgb(132, 248, 116);
 }
-.container {
+.container-lg {
   padding: 0;
-  height: 678px;
+  height: fit-content;
   width: 100%;
   background-color: rgb(248, 224, 116);
+}
+
+.col-lg-9 {
+  padding-right: 0;
 }
 </style>

@@ -2,9 +2,9 @@
   <div class="col-lg-3">
     <aside class="col-menu">
       <div class="menu">
-        <section class="menu-row menu-active">
-          <img src="../../assets/home/dashboard-active.svg" alt="Dashboard">
-          <p class="menu-abjad-active">Dashboard</p>
+        <section class="menu-row">
+          <img src="../../assets/home/dashboard-inactive.svg" alt="Dashboard">
+          <p class="menu-abjad-inactive">Dashboard</p>
         </section>
         <section class="menu-row">
           <img src="../../assets/home/transfer-inactive.svg" alt="Transfer">
@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.col-lg-3 {
+  padding: 0;
+}
 .col-menu {
     padding: 0;
     width: 100%;
@@ -100,6 +103,7 @@ export default {
 }
 
 @media (max-width: 991px) {
+
   .col-menu {
     height: fit-content;
     position: fixed;
