@@ -9,11 +9,12 @@
                         <router-link to="/home/addphone">
                         <div class="left-info">
                             <div class="head-info">Primary</div>
-                            <div class="body-info">{{phone}}</div>
+                            <div class="body-info" v-for="user in users" :key="user.id">{{user.phone}}</div>
+                            <div class="body-info" v-if="users[0].phone === ''">Phone is empty, click here for add</div>
                         </div>
                         </router-link>
                         <div class="right-info">
-                            <img src="../../../assets/home/trash.svg" alt="trash">
+                            <img src="../../../assets/home/trash.svg" alt="trash" @click="deletePhone" class="trash">
                         </div>
                     </section>
                 </div>
@@ -26,7 +27,8 @@ export default {
   name: 'Phone',
   data: function () {
     return {
-      phone: ''
+      users: [],
+      user: 3
     }
   },
   mounted: function () {
@@ -34,11 +36,20 @@ export default {
   },
   methods: {
     getPhone: function () {
-      axios.get('http://localhost:4000/users?name=raden')
+      axios.get(`${process.env.VUE_APP_BASE_URL}users?name=raden`)
         .then(res => {
-          const num = res.data.result[0].phone
-          console.log(num)
-          this.phone = num
+          const user = res.data.result
+          console.log(user)
+          this.users = user
+        })
+    },
+    deletePhone: function () {
+      axios.delete(`${process.env.VUE_APP_BASE_URL}users/phone/${this.user}`)
+        .then(res => {
+          const user = res.data.result
+          console.log(user)
+          this.getPhone()
+          // this.users = user
         })
     }
   }
@@ -197,6 +208,11 @@ input:focus {
 body {
     font-family: 'Nunito Sans';
     background: #FAFCFF;
+    text-decoration: none
+}
+
+.trash {
+  cursor: pointer
 }
 
 .primary-z {

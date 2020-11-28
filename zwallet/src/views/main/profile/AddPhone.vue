@@ -6,21 +6,50 @@
                         Add at least one phone number for the transfer ID so you can start transfering your money to
                         another user.
                     </p>
+                    <form action="submit">
                     <label for="current">
                         <div class="container-pass">
                             <img src="../../../assets/home/phone.svg" alt="phone" class="phone">
                             <div class="country">+62</div>
-                            <input type="text" class="input-box" placeholder="Enter your phone number" id="current">
+                            <input  v-model="phone" type="text" class="input-box" placeholder="Enter your phone number" id="current">
                         </div>
                     </label>
-                    <button class="btn change">Add Phone Number</button>
+                    </form>
+                    <button class="btn change" type="submit" @click="changePhone">Add Phone Number</button>
                 </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter()
+
 export default {
-  name: 'AddPhone'
+  name: 'AddPhone',
+  data: function () {
+    return {
+      phone: null,
+      user: 3
+    }
+  },
+  methods: {
+    changePhone: function (e) {
+      axios.put(`${process.env.VUE_APP_BASE_URL}users/${this.user}`, {
+        phone: this.phone,
+        id: this.user
+      })
+        .then(res => {
+          console.log(res)
+          this.phone = ''
+          router.go(-1)
+        })
+    }
+  }
 }
 </script>
 
