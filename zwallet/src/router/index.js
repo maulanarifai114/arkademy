@@ -17,6 +17,7 @@ import Topup from '../views/main/Topup.vue'
 import Personal from '../views/main/profile/Personal.vue'
 import Pass from '../views/main/profile/Pass.vue'
 import Pin from '../views/main/profile/Pin.vue'
+import Phone from '../views/main/profile/Phone.vue'
 
 Vue.use(VueRouter)
 
@@ -104,6 +105,11 @@ const routes = [
         path: 'pin',
         name: 'Pin',
         component: Pin
+      },
+      {
+        path: 'phone',
+        name: 'Phone',
+        component: Phone
       }
 
     ]
