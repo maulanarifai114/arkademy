@@ -14,9 +14,9 @@
                 </div>
             </section>
             <section class="container-all-receiver">
-                <ContainerTransfer/>
-                <ContainerTransfer/>
-                <ContainerTransfer/>
+                <div v-for="x in data" :key="x.id" >
+                  <containertransfer :nameprof="x.name" :phonenumber="x.phone"></containertransfer>
+                </div>
             </section>
         </section>
     </div>
@@ -24,13 +24,34 @@
 </template>
 
 <script>
-
-import ContainerTransfer from '../../components/main/transfer/ContainerTransfer'
+// :nameprof="name" :phonenumber="phone"
+import containertransfer from '../../components/main/transfer/ContainerTransfer'
 
 export default {
   name: 'Transfer',
   components: {
-    ContainerTransfer
+    containertransfer
+  },
+  data: function () {
+    return {
+      data: [
+        {
+          id: 1,
+          name: 'Raden',
+          phone: '085'
+        },
+        {
+          id: 2,
+          name: 'Alfito',
+          phone: '085'
+        },
+        {
+          id: 3,
+          name: 'Brilian',
+          phone: '085'
+        }
+      ]
+    }
   }
 }
 </script>

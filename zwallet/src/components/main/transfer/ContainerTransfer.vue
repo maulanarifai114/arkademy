@@ -19,7 +19,7 @@ export default {
   name: 'ContainerTransfer',
   props: {
     nameprof: String,
-    phonenumber: String
+    phonenumber: Number
   }
 }
 </script>
