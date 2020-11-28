@@ -10,10 +10,19 @@
           <containertransfer :nameprof="name" :phonenumber="phone"></containertransfer>
           <div class="container-type-p">
             <p class="type-p">Type the amount you want to transfer and then press continue to the next steps.</p>
-            <input type="text">
+          </div>
+          <form class="input-amount" action="submit">
+            <input type="number" placeholder="0.00" v-model="amountTransfer">
+            <p>Rp. {{balance}} Available</p>
+            <div class="notes d-flex align-items-start">
+              <img src="../../../assets/home/pen-inactive.svg" alt="">
+              <input type="text" placeholder="Add some notes" v-model="notes">
+            </div>
+          </form>
+          <div class="d-flex justify-content-end mt-5">
+            <button class="btn btn-primary mr-4 btn-custom" type="submit">Confirm</button>
           </div>
         </section>
-
       </section>
     </div>
   </div>
@@ -32,7 +41,10 @@ export default {
     return {
       id: 0,
       name: '',
-      phone: ''
+      phone: '',
+      balance: 0,
+      amountTransfer: null,
+      notes: ''
     }
   },
   mounted: function () {
@@ -43,9 +55,10 @@ export default {
       axios.get(`${process.env.VUE_APP_BASE_URL}users?id=${this.$route.params.id}`)
         .then(res => {
           const phonenum = res.data.result[0].phone
+          this.id = res.data.result[0].id
           this.name = res.data.result[0].name
           this.phone = `+62 ${phonenum}`
-
+          this.balance = res.data.result[0].balance
           console.log(res.data.result[0].name)
         })
         .catch(err => {
@@ -209,6 +222,28 @@ body {
     background: #FAFCFF;
 }
 
+.btn-custom {
+  height: 57px;
+  width: 170px;
+  border-radius: 12px;
+  background-color: #6379F4;
+
+  //styleName: Bold (Button);
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+
+}
+
+.container-type-p {
+  margin: 0 0 35px 0;
+  padding: 0 30px
+}
+
 .type-p {
   font-family: Nunito Sans;
   font-size: 16px;
@@ -219,11 +254,90 @@ body {
   text-align: left;
   color: #7A7886;
   width: 336px;
+  // margin: 0 0 35px 0;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input-amount {
+  padding: 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
 }
 
-.container-type-p {
-  padding: 0 30px;
-  margin: 0 0 65px 0;
+.input-amount input:nth-child(1) {
+  background-color: rgba(255, 175, 175, 0);
+  height: 86px;
+  // fonts
+  font-family: Nunito Sans;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #6379F4;
+  margin: 0 0 40px 0;
+}
+
+.rp {
+  font-family: Nunito Sans;
+  font-size: 42px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 56px;
+  letter-spacing: 0px;
+  text-align: center;
+  color: #6379F4;
+  margin: 0 0 40px 0;
+}
+
+.input-amount input::placeholder {
+  color: #B5BDCC;
+}
+
+.input-amount p {
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #3A3D42;
+  margin: 0 0 60px 0
+}
+
+.notes {
+  height: 37px;
+  width: 343px;
+  border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+}
+
+.notes img {
+  margin: 0 15px 0 0
+}
+
+.notes input {
+  height: 23px;
+  width: 300px;
+}
+
+.notes input::placeholder {
+  //styleName: Regular (Label);
+font-family: Nunito Sans;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+line-height: 23px;
+letter-spacing: 0em;
+text-align: left;
+
 }
 
 .primary-z {
@@ -699,10 +813,10 @@ body {
 /* Container History */
 .history {
     display: flex;
-    overflow: auto;
+    // overflow: fit-content;
     flex-direction: column;
     padding: 30px 0 0 0;
-    height: 678px;
+    min-height: 678px;
     width: 850px;
     background-color: rgb(255, 255, 255);
     margin: 0 0 0 5px;
@@ -819,7 +933,7 @@ label {
     justify-content: center;
     margin: 0 0 20px 0;
     background-color: white;
-    padding: 0 30px;
+    padding: 0px !important;
 }
 
 .min-margin {
@@ -829,7 +943,8 @@ label {
 .container-all-receiver {
     width: 100%;
     height: 100%;
-    overflow: auto;
+    // overflow: fit-content;
+    // padding: 0 30px
 }
 
 .container-all-receiver::-webkit-scrollbar {
