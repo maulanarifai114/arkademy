@@ -2,7 +2,7 @@
   <div class="col-lg-3">
     <aside class="col-menu">
       <div class="menu">
-        <router-link to="/home">
+        <router-link to="/home/dashboard">
           <section class="menu-row">
             <img src="../../assets/home/dashboard-inactive.svg" alt="Dashboard">
             <p class="menu-abjad-inactive">Dashboard</p>
@@ -45,9 +45,9 @@ export default {
 
 <style lang="scss" scoped>
 
-.col-lg-3 {
-  padding: 0;
-}
+// .col-lg-3 {
+//   padding: 0;
+// }
 .col-menu {
     padding: 0;
     width: 100%;
