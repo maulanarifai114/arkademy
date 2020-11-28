@@ -14,42 +14,6 @@
                 </div>
             </section>
             <section class="container-all-receiver">
-                <!-- <div class="container-history">
-                    <div class="container-receiver">
-                        <img src="../../assets/home/samuel-suhi.png" alt="profile-h" class="profile-h">
-                        <div class="container-name-purpose">
-                            <div class="name cut-text">Samuel Suhi</div>
-                            <div class="purpose">+62 813-8492-9994</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-history">
-                    <div class="container-receiver">
-                        <img src="../../assets/home/momo-taro.png" alt="profile-h" class="profile-h">
-                        <div class="container-name-purpose">
-                            <div class="name cut-text">Momo Taro</div>
-                            <div class="purpose">+62 812-4343-6731</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-history">
-                    <div class="container-receiver">
-                        <img src="../../assets/home/jessica-keen.png" alt="profile-h" class="profile-h">
-                        <div class="container-name-purpose">
-                            <div class="name cut-text">Jessica Keen</div>
-                            <div class="purpose">+62 811-3452-5252</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="container-history">
-                    <div class="container-receiver">
-                        <img src="../../assets/home/michael-le.png" alt="profile-h" class="profile-h">
-                        <div class="container-name-purpose">
-                            <div class="name cut-text">Michael Le</div>
-                            <div class="purpose">+62 810-4224-4613</div>
-                        </div>
-                    </div>
-                </div> -->
                 <ContainerTransfer/>
                 <ContainerTransfer/>
                 <ContainerTransfer/>
