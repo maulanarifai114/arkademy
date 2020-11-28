@@ -13,6 +13,11 @@ import Dashboard from '../views/main/Dashboard.vue'
 import Profile from '../views/main/Profile.vue'
 import Transfer from '../views/main/Transfer.vue'
 import Topup from '../views/main/Topup.vue'
+
+import Personal from '../views/main/profile/Personal.vue'
+import Pass from '../views/main/profile/Pass.vue'
+import Pin from '../views/main/profile/Pin.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -84,7 +89,23 @@ const routes = [
         path: 'profile',
         name: 'Profile',
         component: Profile
+      },
+      {
+        path: 'personal',
+        name: 'Personal',
+        component: Personal
+      },
+      {
+        path: 'pass',
+        name: 'Pass',
+        component: Pass
+      },
+      {
+        path: 'pin',
+        name: 'Pin',
+        component: Pin
       }
+
     ]
   }
 

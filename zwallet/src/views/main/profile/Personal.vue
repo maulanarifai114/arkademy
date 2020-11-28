@@ -1,50 +1,43 @@
 <template>
   <div>
-    <div class="container-prof">
-
-      <section class="container-photo">
-        <img src="../../assets/home/prof.png" alt="profile" width="80px" height="80px">
-        <div class="edit">
-            <img src="../../assets/home/edit.svg" alt="">
-            <div class="text-edit">Edit</div>
-        </div>
-        <div class="name-profile">Robert Chandler</div>
-        <div class="phone-profile">+62 813-9387-7946</div>
-      </section>
-
-      <router-link to="/home/personal">
-        <button class="container-to-page">
-          <div class="content-text">Personal Information</div>
-          <img src="../../assets/home/to-page.svg" alt="">
-        </button>
-      </router-link>
-
-      <router-link to="/home/pass">
-        <button class="container-to-page">
-          <div class="content-text">Change Password</div>
-          <img src="../../assets/home/to-page.svg" alt="">
-        </button>
-      </router-link>
-
-      <router-link to="/home/pin">
-        <button class="container-to-page">
-          <div class="content-text">Change PIN</div>
-          <img src="../../assets/home/to-page.svg" alt="">
-        </button>
-      </router-link>
-
-      <router-link to="/auth/login">
-        <button class="container-to-page">
-          <div class="content-text">Logout</div>
-        </button>
-      </router-link>
-    </div>
+    <section class="container-prof">
+                    <header class="header">Personal Info</header>
+                    <p class="paragraph-info">
+                        We got your personal information from the sign up proccess. If you want to make changes on your
+                        information, contact our support.
+                    </p>
+                    <div class="container-info">
+                        <div class="left-info">
+                            <div class="head-info">First Name</div>
+                            <div class="body-info">Robert</div>
+                        </div>
+                    </div>
+                    <div class="container-info">
+                        <div class="left-info">
+                            <div class="head-info">Last Name</div>
+                            <div class="body-info">Chandler</div>
+                        </div>
+                    </div>
+                    <div class="container-info">
+                        <div class="left-info">
+                            <div class="head-info">Verified E-mail</div>
+                            <div class="body-info">pewdiepie1@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="container-info">
+                        <div class="left-info">
+                            <div class="head-info">Phone Number</div>
+                            <div class="body-info">+62 813-9387-7946</div>
+                        </div>
+                        <a class="right-info" href="#">Manage</a>
+                    </div>
+                </section>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Profile'
+  name: 'Personal'
 }
 </script>
 
@@ -430,10 +423,10 @@ button:focus {
 }
 
 .container-prof {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     display: flex;
     box-sizing: border-box;
-    padding: 50px 30px 30px 30px;
+    padding: 30px;
     width: calc(100% - 5px);
     height: 100%;
     border-radius: 25px;
@@ -442,6 +435,84 @@ button:focus {
     align-items: center;
     /* justify-content: center; */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.header {
+    align-self: flex-start;
+    font-family: Nunito Sans;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #3A3D42;
+    margin: 0 0 25px 0;
+}
+
+.paragraph-info {
+    color: #7A7886;
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    width: 342px;
+    align-self: flex-start;
+    margin: 0 0 40px 0;
+}
+
+.container-info {
+    background-color: white;
+    width: 100%;
+    height: 92px;
+    box-sizing: border-box;
+    padding: 15px 20px 15px 15px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    margin: 0 0 20px 0;
+}
+
+.left-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.right-info {
+    align-self: center;
+    color: #6379F4;
+}
+
+.right-info:hover {
+    text-decoration: none;
+}
+
+.head-info {
+    font-family: Nunito Sans;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #7A7886;
+}
+
+.body-info {
+    font-family: Nunito Sans;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: #514F5B;
 }
 
 .container-photo {
@@ -1133,11 +1204,6 @@ footer .container {
 /* Media Small 576 - 767 */
 @media (max-width: 767px) {
 
-    /* footer {
-        position: static;
-        margin-top: 0;
-    } */
-
     .row-dashboard {
         height: fit-content;
     }
@@ -1179,6 +1245,20 @@ footer .container {
 
 @media (max-width: 575px) {
 
+    .body-info {
+        font-size: 16px;
+    }
+
+    .container-prof {
+        margin-left: 20px;
+        margin-right: 20px;
+        width: 100%;
+    }
+
+    .paragraph-info {
+        font-size: 14px;
+    }
+
     .container-to-page {
         width: 100%;
     }
@@ -1216,7 +1296,25 @@ footer .container {
     }
 }
 
+@media (max-width: 450px) {
+
+    .paragraph-info {
+        width: 100%;
+    }
+
+}
+
 @media (max-width: 375px) {
+
+    .right-info {
+        font-size: 14px;
+    }
+
+    .container-prof {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
 
     .email {
         margin-left: 8px;
@@ -1270,6 +1368,10 @@ footer .container {
 }
 
 @media (max-width: 320px) {
+
+    .container-prof {
+        margin-top: 120px;
+    }
 
     .content-text {
         font-size: 14px;

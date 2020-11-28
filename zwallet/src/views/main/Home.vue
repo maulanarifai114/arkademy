@@ -32,20 +32,11 @@ export default {
   padding: 180px 0 0 0;
 }
 
-.container-fluid {
-  margin-top: 180px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 0;
-  height: fit-content;
-  // width: 100%;
-  background-color: rgb(132, 248, 116);
-}
 .container-lg {
   padding: 0;
   height: fit-content;
   width: 100%;
-  background-color: rgb(248, 224, 116);
+  // background-color: rgb(248, 224, 116);
 }
 
 .col-lg-9 {
