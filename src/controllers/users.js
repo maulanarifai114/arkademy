@@ -4,12 +4,13 @@ const users = {
 
   // getAllUsers, getUserByName, getUserByPhone
   getAllUsers: (req, res) => {
+    const id = req.query.id
     const name = req.query.name
     const phone = req.query.phone
     const page = req.query.page
     const limit = req.query.limit
     const offset = (page - 1) * limit
-    modelUser.getAllUsers(name, phone, offset, limit)
+    modelUser.getAllUsers(name, phone, offset, limit, id)
       .then(result => {
         const resultAllUsers = result
         if (resultAllUsers.length == 0 && name) {
@@ -132,6 +133,25 @@ const users = {
   deleteUser: (req, res) => {
     const id = req.params.id
     modelUser.deleteUser(id)
+      .then(result => {
+        const resultDeleteUser = result
+        if (resultDeleteUser.affectedRows == 0) {
+          helper.reject(res, resultDeleteUser, 404, {
+            message: 'id not found, can\'t be deleted'
+          })
+        }
+        helper.response(res, {
+          message: 'data has been deleted'
+        }, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+
+  deletePhone: (req, res) => {
+    const id = req.params.id
+    modelUser.deletePhone(id)
       .then(result => {
         const resultDeleteUser = result
         if (resultDeleteUser.affectedRows == 0) {

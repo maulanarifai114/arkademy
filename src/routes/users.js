@@ -7,6 +7,7 @@ router
   .post('/', usersControl.insertUser)
   .put('/:id', usersControl.updateUser)
   .delete('/:id', usersControl.deleteUser)
+  .delete('/phone/:id', usersControl.deletePhone)
 module.exports = router
 
 // .get('/', productController.getProducts)
