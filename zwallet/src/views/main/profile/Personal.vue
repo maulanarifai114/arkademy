@@ -29,7 +29,7 @@
                             <div class="head-info">Phone Number</div>
                             <div class="body-info">+62 813-9387-7946</div>
                         </div>
-                        <a class="right-info" href="#">Manage</a>
+                        <router-link class="right-info" to="/home/phone">Manage</router-link>
                     </div>
                 </section>
   </div>

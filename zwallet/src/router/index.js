@@ -18,6 +18,7 @@ import Personal from '../views/main/profile/Personal.vue'
 import Pass from '../views/main/profile/Pass.vue'
 import Pin from '../views/main/profile/Pin.vue'
 import Phone from '../views/main/profile/Phone.vue'
+import AddPhone from '../views/main/profile/AddPhone.vue'
 
 Vue.use(VueRouter)
 
@@ -110,6 +111,11 @@ const routes = [
         path: 'phone',
         name: 'Phone',
         component: Phone
+      },
+      {
+        path: 'addphone',
+        name: 'AddPhone',
+        component: AddPhone
       }
 
     ]
