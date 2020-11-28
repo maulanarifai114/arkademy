@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row row-default row-report">
-            <section class="history">
+        <section class="history">
             <header class="container-transaction">
                 <p class="transaction-h">Search Receiver</p>
             </header>
