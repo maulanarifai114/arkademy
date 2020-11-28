@@ -19,7 +19,7 @@ export default {
   name: 'ContainerTransfer',
   props: {
     nameprof: String,
-    phonenumber: Number
+    phonenumber: String
   }
 }
 </script>
@@ -34,6 +34,7 @@ export default {
     margin: 0 0 20px 0;
     background-color: white;
     padding: 0 30px;
+    cursor: pointer
 }
 
 .container-receiver {

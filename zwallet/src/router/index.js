@@ -86,7 +86,7 @@ const routes = [
 
       },
       {
-        path: 'transfer/:id',
+        path: 'transfer/id/:id',
         name: 'TransferTo',
         component: TransferTo
       },

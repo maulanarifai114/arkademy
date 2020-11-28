@@ -5,9 +5,15 @@
         <header class="container-transaction">
           <p class="transaction-h">Transfer Money</p>
         </header>
+
         <section class="container-all-receiver">
-          <containertransfer :nameprof="x.name" :phonenumber="x.phone"></containertransfer>
+          <containertransfer :nameprof="name" :phonenumber="phone"></containertransfer>
+          <div class="container-type-p">
+            <p class="type-p">Type the amount you want to transfer and then press continue to the next steps.</p>
+            <input type="text">
+          </div>
         </section>
+
       </section>
     </div>
   </div>
@@ -15,6 +21,7 @@
 
 <script>
 import containertransfer from '../../../components/main/transfer/ContainerTransfer'
+import axios from 'axios'
 
 export default {
   name: 'Transfer',
@@ -23,7 +30,27 @@ export default {
   },
   data: function () {
     return {
-      data: []
+      id: 0,
+      name: '',
+      phone: ''
+    }
+  },
+  mounted: function () {
+    this.getAllUser()
+  },
+  methods: {
+    getAllUser () {
+      axios.get(`${process.env.VUE_APP_BASE_URL}users?id=${this.$route.params.id}`)
+        .then(res => {
+          const phonenum = res.data.result[0].phone
+          this.name = res.data.result[0].name
+          this.phone = `+62 ${phonenum}`
+
+          console.log(res.data.result[0].name)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }
@@ -180,6 +207,23 @@ input:focus {
 body {
     font-family: 'Nunito Sans';
     background: #FAFCFF;
+}
+
+.type-p {
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #7A7886;
+  width: 336px;
+}
+
+.container-type-p {
+  padding: 0 30px;
+  margin: 0 0 65px 0;
 }
 
 .primary-z {

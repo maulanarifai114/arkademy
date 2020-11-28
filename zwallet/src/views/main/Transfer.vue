@@ -16,7 +16,9 @@
             </section>
             <section class="container-all-receiver">
                 <div v-for="x in data" :key="x.id" >
-                  <containertransfer :nameprof="x.name" :phonenumber="x.phone"></containertransfer>
+                  <div @click="goToPage(x.id)">
+                    <containertransfer :nameprof="x.name" :phonenumber="'+62 ' + x.phone"></containertransfer>
+                  </div>
                   <!-- <router-link :to="'/home/transfer/' + x.id"> -->
                   <!-- </router-link> -->
                 </div>
@@ -50,6 +52,12 @@ export default {
           this.data = res.data.result
           // console.log(res.data.result)
         })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    goToPage (id) {
+      this.$router.push({ path: `/home/transfer/id/${id}` })
     }
   }
 }
