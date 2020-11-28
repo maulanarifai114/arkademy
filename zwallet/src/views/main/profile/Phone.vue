@@ -9,7 +9,7 @@
                         <router-link to="/home/addphone">
                         <div class="left-info">
                             <div class="head-info">Primary</div>
-                            <div class="body-info">+62 813 9387 7946</div>
+                            <div class="body-info">{{phone}}</div>
                         </div>
                         </router-link>
                         <div class="right-info">
@@ -21,8 +21,28 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'Phone'
+  name: 'Phone',
+  data: function () {
+    return {
+      phone: ''
+    }
+  },
+  mounted: function () {
+    this.getPhone()
+  },
+  methods: {
+    getPhone: function () {
+      axios.get('http://localhost:4000/users?name=raden')
+        .then(res => {
+          const num = res.data.result[0].phone
+          console.log(num)
+          this.phone = num
+        })
+    }
+  }
+
 }
 </script>
 
