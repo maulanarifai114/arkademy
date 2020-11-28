@@ -14,7 +14,7 @@
                 </div>
             </section>
             <section class="container-all-receiver">
-                <div class="container-history">
+                <!-- <div class="container-history">
                     <div class="container-receiver">
                         <img src="../../assets/home/samuel-suhi.png" alt="profile-h" class="profile-h">
                         <div class="container-name-purpose">
@@ -49,7 +49,10 @@
                             <div class="purpose">+62 810-4224-4613</div>
                         </div>
                     </div>
-                </div>
+                </div> -->
+                <ContainerTransfer/>
+                <ContainerTransfer/>
+                <ContainerTransfer/>
             </section>
         </section>
     </div>
@@ -57,8 +60,14 @@
 </template>
 
 <script>
+
+import ContainerTransfer from '../../components/main/transfer/ContainerTransfer'
+
 export default {
-  name: 'Transfer'
+  name: 'Transfer',
+  components: {
+    ContainerTransfer
+  }
 }
 </script>
 
