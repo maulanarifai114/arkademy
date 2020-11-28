@@ -20,6 +20,8 @@ import Pin from '../views/main/profile/Pin.vue'
 import Phone from '../views/main/profile/Phone.vue'
 import AddPhone from '../views/main/profile/AddPhone.vue'
 
+import TransferTo from '../views/main/transfer/TransferTo.vue'
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -81,6 +83,11 @@ const routes = [
         path: 'transfer',
         name: 'Transfer',
         component: Transfer
+      },
+      {
+        path: 'transferto',
+        name: 'TransferTo',
+        component: TransferTo
       },
       {
         path: 'topup',
