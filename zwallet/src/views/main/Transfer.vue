@@ -2,6 +2,7 @@
   <div>
     <div class="row row-default row-report">
         <section class="history">
+            <router-view></router-view>
             <header class="container-transaction">
                 <p class="transaction-h">Search Receiver</p>
             </header>
@@ -16,6 +17,8 @@
             <section class="container-all-receiver">
                 <div v-for="x in data" :key="x.id" >
                   <containertransfer :nameprof="x.name" :phonenumber="x.phone"></containertransfer>
+                  <!-- <router-link :to="'/home/transfer/' + x.id"> -->
+                  <!-- </router-link> -->
                 </div>
             </section>
         </section>
@@ -25,6 +28,7 @@
 
 <script>
 import containertransfer from '../../components/main/transfer/ContainerTransfer'
+import axios from 'axios'
 
 export default {
   name: 'Transfer',
@@ -33,23 +37,19 @@ export default {
   },
   data: function () {
     return {
-      data: [
-        {
-          id: 1,
-          name: 'Raden',
-          phone: '085'
-        },
-        {
-          id: 2,
-          name: 'Alfito',
-          phone: '085'
-        },
-        {
-          id: 3,
-          name: 'Brilian',
-          phone: '085'
-        }
-      ]
+      data: []
+    }
+  },
+  mounted: function () {
+    this.getAllUser()
+  },
+  methods: {
+    getAllUser () {
+      axios.get(`${process.env.VUE_APP_BASE_URL}users`)
+        .then(res => {
+          this.data = res.data.result
+          // console.log(res.data.result)
+        })
     }
   }
 }

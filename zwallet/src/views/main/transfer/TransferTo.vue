@@ -1,30 +1,20 @@
 <template>
   <div>
     <div class="row row-default row-report">
-        <section class="history">
-            <header class="container-transaction">
-                <p class="transaction-h">Search Receiver</p>
-            </header>
-            <section class="container-search">
-                <div class="search-receiver">
-                    <label for="search">
-                        <img src="../../assets/home/search.svg" alt="">
-                    </label>
-                    <input type="text" placeholder="Search Receiver" id="search">
-                </div>
-            </section>
-            <section class="container-all-receiver">
-                <div v-for="x in data" :key="x.id" >
-                  <containertransfer :nameprof="x.name" :phonenumber="x.phone"></containertransfer>
-                </div>
-            </section>
+      <section class="history">
+        <header class="container-transaction">
+          <p class="transaction-h">Transfer Money</p>
+        </header>
+        <section class="container-all-receiver">
+          <containertransfer :nameprof="x.name" :phonenumber="x.phone"></containertransfer>
         </section>
+      </section>
     </div>
   </div>
 </template>
 
 <script>
-import containertransfer from '../../components/main/transfer/ContainerTransfer'
+import containertransfer from '../../../components/main/transfer/ContainerTransfer'
 
 export default {
   name: 'Transfer',
@@ -33,23 +23,7 @@ export default {
   },
   data: function () {
     return {
-      data: [
-        {
-          id: 1,
-          name: 'Raden',
-          phone: '085'
-        },
-        {
-          id: 2,
-          name: 'Alfito',
-          phone: '085'
-        },
-        {
-          id: 3,
-          name: 'Brilian',
-          phone: '085'
-        }
-      ]
+      data: []
     }
   }
 }

@@ -83,9 +83,10 @@ const routes = [
         path: 'transfer',
         name: 'Transfer',
         component: Transfer
+
       },
       {
-        path: 'transferto',
+        path: 'transfer/:id',
         name: 'TransferTo',
         component: TransferTo
       },

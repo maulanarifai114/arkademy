@@ -2,36 +2,42 @@
   <div class="col-lg-3">
     <aside class="col-menu">
       <div class="menu">
+
         <router-link to="/home/dashboard">
           <section class="menu-row">
             <img src="../../assets/home/dashboard-inactive.svg" alt="Dashboard">
             <p class="menu-abjad-inactive">Dashboard</p>
           </section>
         </router-link>
+
         <router-link to="/home/transfer">
           <section class="menu-row">
             <img src="../../assets/home/transfer-inactive.svg" alt="Transfer">
             <p class="menu-abjad-inactive">Transfer</p>
           </section>
         </router-link>
+
         <router-link to="/home/topup">
           <section class="menu-row">
             <img src="../../assets/home/topup-inactive.svg" alt="Top Up">
             <p class="menu-abjad-inactive">Top Up</p>
           </section>
         </router-link>
+
         <router-link to="/home/profile">
           <section class="menu-row">
             <img src="../../assets/home/profile-inactive.svg" alt="Profile">
             <p class="menu-abjad-inactive">Profile</p>
           </section>
         </router-link>
+
         <section class="menu-logout">
           <div class="menu-row logout">
             <img src="../../assets/home/logout-inactive.svg" alt="Logout">
             <p class="menu-abjad-inactive">Logout</p>
           </div>
         </section>
+
       </div>
     </aside>
   </div>
