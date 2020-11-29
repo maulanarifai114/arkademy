@@ -59,7 +59,7 @@ export default {
   },
   methods: {
     getAllUser () {
-      axios.get(`${process.env.VUE_APP_BASE_URL}users?id=${this.$route.params.id}`)
+      axios.get(`${process.env.VUE_APP_BASE_URL}users`)
         .then(res => {
           const idReceiver = this.$route.params.id
           const phonenum = res.data.result[`${idReceiver - 1}`].phone
