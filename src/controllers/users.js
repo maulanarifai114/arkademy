@@ -166,8 +166,7 @@ const users = {
       .catch((err) => {
         console.log(err)
       })
-  }
-
+  },
 }
 module.exports = users
 // module.exports = users

@@ -6,4 +6,5 @@ router
   .get('/', transControl.getAllTrans)
   .post('/', transControl.insertTrans)
   .delete('/:id', transControl.deleteTrans)
+  .put('/:id', transControl.transferAmount)
 module.exports = router

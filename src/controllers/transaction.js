@@ -72,6 +72,26 @@ const trans = {
       .catch((err) => {
         console.log(err)
       })
+  },
+
+  transferAmount: (req, res) => {
+    const balance = req.body.balance
+    const id = req.body.id
+    modelUser.transferAmount(id, balance)
+      .then(result => {
+        const resultTransfer = result
+        if (resultTransfer.affectedRows == 0) {
+          helper.reject(res, resultTransfer, 404, {
+            message: 'id not found, can\'t be transfered'
+          })
+        }
+        helper.response(res, {
+          message: 'balance has been updated'
+        }, 200, null)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
 }
