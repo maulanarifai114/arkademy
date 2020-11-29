@@ -89,15 +89,14 @@ export default {
           console.log(res.data.result)
           const parseAmount = parseInt(this.amount)
           const balanced = this.balance - parseAmount
+          // const receiverId = this.id
           // let currentBalance = this.balance
           console.log('balanced')
-          axios.put(`${process.env.VUE_APP_BASE_URL}users/${this.senderId}`, {
-            balance: balanced
+          axios.put(`${process.env.VUE_APP_BASE_URL}users/${this.senderId}`, { balance: balanced })
+            .then(res => { console.log(balanced) })
+          axios.put(`${process.env.VUE_APP_BASE_URL}transaction/${this.id}`, {
+            balance: parseAmount
           })
-            .then(res => {
-              // currentBalance = 0
-              console.log(balanced)
-            })
         })
     }
   }
