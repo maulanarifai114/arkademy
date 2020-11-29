@@ -50,7 +50,7 @@ export default {
       axios.get(`${process.env.VUE_APP_BASE_URL}users`)
         .then(res => {
           this.data = res.data.result
-          // console.log(res.data.result)
+          // console.log(data)
         })
         .catch(err => {
           console.log(err)
