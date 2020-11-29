@@ -61,25 +61,13 @@ export default {
     getAllUser () {
       axios.get(`${process.env.VUE_APP_BASE_URL}users`)
         .then(res => {
-          const data = res.data.result
           const idReceiver = this.$route.params.id
-          const parseIdReceiver = parseInt(idReceiver)
-          let name = this.name
-          data.forEach(function (item, index) {
-            if (item.id === parseIdReceiver) {
-              name = item.name
-              console.log(`in berhasil ${parseIdReceiver} ${name}`)
-            } else {
-              console.log('not in')
-            }
-          })
-          // console.log(data)
-          // const phonenum = res.data.result[0].phone
-          // this.id = res.data.result[0].id
-          // this.name = res.data.result[0].name
-          // this.phone = `+62 ${phonenum}`
-          // this.balance = res.data.result[0].balance
-          // console.log(res.data.result[0].name)
+          const phonenum = res.data.result[`${idReceiver}`].phone
+          this.id = res.data.result[`${idReceiver}`].id
+          this.name = res.data.result[`${idReceiver}`].name
+          this.phone = `+62 ${phonenum}`
+          this.balance = res.data.result[`${idReceiver}`].balance
+          console.log(res.data.result[`${idReceiver}`].name)
         })
         .catch(err => {
           console.log(err)
