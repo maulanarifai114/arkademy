@@ -75,8 +75,10 @@ const trans = {
   },
 
   transferAmount: (req, res) => {
-    const balance = req.body.balance
     const id = req.params.id
+    const {
+      balance
+    } = req.body
     transModel.transferAmount(id, balance)
       .then(result => {
         const resultTransfer = result
