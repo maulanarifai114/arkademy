@@ -11,13 +11,13 @@
                     <label for="search">
                         <img src="../../assets/home/search.svg" alt="">
                     </label>
-                    <input type="text" placeholder="Search Receiver" id="search" v-model="filterText">
+                    <input @keyup.enter="getUserByName" type="text" placeholder="Search Receiver" id="search" v-model="search">
                 </div>
             </section>
-            <button class="btn btn-primary btn-custom"> Sort from A</button>
-            <button class="btn btn-primary btn-custom"> Sort from Z</button>
+            <button class="btn btn-primary btn-custom" @click="sortFromA"> Sort from A</button>
+            <button class="btn btn-primary btn-custom" @click="sortFromZ"> Sort from Z</button>
             <section class="container-all-receiver">
-              <!-- <div v-for="entry in filteredNames" :key=""> -->
+              <!-- <div v-for="data in filteredNames" :key="data.id"> -->
                 <div v-for="x in data" :key="x.id" >
                   <div @click="goToPage(x.id)">
                     <containertransfer :nameprof="x.name" :phonenumber="'+62 ' + x.phone" v-if="x.id !== 3"></containertransfer>
@@ -42,7 +42,7 @@ export default {
   data: function () {
     return {
       data: [],
-      filterText: ''
+      search: ''
     }
   },
   mounted: function () {
@@ -53,7 +53,8 @@ export default {
       axios.get(`${process.env.VUE_APP_BASE_URL}users`)
         .then(res => {
           this.data = res.data.result
-          // console.log(data)
+          const deta = res.data.result
+          console.log(deta)
         })
         .catch(err => {
           console.log(err)
@@ -61,12 +62,23 @@ export default {
     },
     goToPage (id) {
       this.$router.push({ path: `/home/transfer/id/${id}` })
-    }
-  },
-  computed: {
-    filteredNames () {
-      const filter = new RegExp(this.filterText, 'i')
-      return this.data.filter(el => el.name.match(filter))
+    },
+    sortFromA () {
+      this.data.sort((a, b) => a.name > b.name ? 1 : -1)
+    },
+    sortFromZ () {
+      this.data.sort((a, b) => a.name < b.name ? 1 : -1)
+    },
+    getUserByName () {
+      axios.get(`${process.env.VUE_APP_BASE_URL}users?name=${this.search}`)
+        .then(res => {
+          this.data = res.data.result
+          const deta = res.data.result
+          console.log(deta)
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   }
 }
