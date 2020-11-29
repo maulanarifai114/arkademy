@@ -4,8 +4,8 @@
     <div class="col-balance">
         <div class="left-balance">
             <div class="balance">Balance</div>
-            <div class="amount-balance">Rp120.000</div>
-            <div class="phone-balance">+62 813-9387-7946</div>
+            <div class="amount-balance">Rp {{data.balance}}</div>
+            <div class="phone-balance">+62 {{data.phone}}</div>
         </div>
         <div class="right-balance">
             <div class="btn-balance">
@@ -109,8 +109,33 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
-  name: 'Dashboard'
+  name: 'Dashboard',
+  data: function () {
+    return {
+      id: 3,
+      data: []
+    }
+  },
+  mounted: function () {
+    this.getOneUser()
+  },
+  methods: {
+    getOneUser () {
+      axios.get(`${process.env.VUE_APP_BASE_URL}users?id=${this.id}`)
+        .then(res => {
+          const data = res.data.result[0]
+          this.data = data
+          console.log(data)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
+  }
+
 }
 </script>
 
