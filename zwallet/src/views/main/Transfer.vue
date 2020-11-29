@@ -14,6 +14,8 @@
                     <input type="text" placeholder="Search Receiver" id="search" v-model="filterText">
                 </div>
             </section>
+            <button class="btn btn-primary btn-custom"> Sort from A</button>
+            <button class="btn btn-primary btn-custom"> Sort from Z</button>
             <section class="container-all-receiver">
               <!-- <div v-for="entry in filteredNames" :key=""> -->
                 <div v-for="x in data" :key="x.id" >
@@ -217,6 +219,18 @@ input:focus {
 }
 
 /* End CSS Reset */
+
+.btn-custom {
+  width: 25%;
+  margin: 0 0 10px 30px;
+  font-family: 'Nunito Sans';
+  font-size: 1.2em;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 1em;
+  letter-spacing: 0em;
+  text-align: center;
+}
 
 body {
     font-family: 'Nunito Sans';
