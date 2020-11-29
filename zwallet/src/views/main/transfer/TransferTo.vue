@@ -59,17 +59,17 @@ export default {
   },
   methods: {
     getAllUser () {
-      axios.get(`${process.env.VUE_APP_BASE_URL}users`)
+      axios.get(`${process.env.VUE_APP_BASE_URL}users?id=${this.$route.params.id}`)
         .then(res => {
-          const idReceiver = this.$route.params.id
-          const phonenum = res.data.result[`${idReceiver - 1}`].phone
-
-          this.id = res.data.result[`${idReceiver - 1}`].id
-          this.name = res.data.result[`${idReceiver - 1}`].name
-          this.phone = `+62 ${phonenum}`
-          this.balance = res.data.result[`${idReceiver - 1}`].balance
-
-          console.log(res.data.result[`${idReceiver - 1}`].name)
+          const data = res.data.result[0]
+          console.log(data)
+          // const idReceiver = this.$route.params.id
+          // const phonenum = res.data.result[`${idReceiver - 1}`].phone
+          // this.id = res.data.result[`${idReceiver - 1}`].id
+          // this.name = res.data.result[`${idReceiver - 1}`].name
+          // this.phone = `+62 ${phonenum}`
+          // this.balance = res.data.result[`${idReceiver - 1}`].balance
+          // console.log(res.data.result[`${idReceiver - 1}`].name)
         })
         .catch(err => {
           console.log(err)
