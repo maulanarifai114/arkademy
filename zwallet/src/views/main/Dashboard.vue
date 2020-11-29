@@ -80,30 +80,6 @@
             </div>
             <div class="amount-plus">+Rp50.000</div>
         </section>
-        <!-- <section class="container-history">
-            <img src="../../assets/home/netflix.png" alt="profile-h" class="profile-h">
-            <div class="container-name-purpose">
-                <div class="name cut-text">Netflix</div>
-                <div class="purpose">Subscription</div>
-            </div>
-            <div class="amount-minus">-Rp149.000</div>
-        </section>
-        <section class="container-history">
-            <img src="../../assets/home/christine-marine.png" alt="profile-h" class="profile-h">
-            <div class="container-name-purpose">
-                <div class="name cut-text">Christine Marine</div>
-                <div class="purpose">Transfer</div>
-            </div>
-            <div class="amount-plus">+Rp150.000</div>
-        </section>
-        <section class="container-history">
-            <img src="../../assets/home/adobe.png" alt="profile-h" class="profile-h">
-            <div class="container-name-purpose">
-                <div class="name cut-text">Adobe Inc.</div>
-                <div class="purpose">Subscription</div>
-            </div>
-            <div class="amount-minus">-Rp249.000</div>
-        </section> -->
     </aside>
 </section>
   </div>

@@ -11,17 +11,17 @@
                     <label for="search">
                         <img src="../../assets/home/search.svg" alt="">
                     </label>
-                    <input type="text" placeholder="Search Receiver" id="search">
+                    <input type="text" placeholder="Search Receiver" id="search" v-model="filterText">
                 </div>
             </section>
             <section class="container-all-receiver">
+              <!-- <div v-for="entry in filteredNames" :key=""> -->
                 <div v-for="x in data" :key="x.id" >
                   <div @click="goToPage(x.id)">
                     <containertransfer :nameprof="x.name" :phonenumber="'+62 ' + x.phone" v-if="x.id !== 3"></containertransfer>
                   </div>
-                  <!-- <router-link :to="'/home/transfer/' + x.id"> -->
-                  <!-- </router-link> -->
                 </div>
+              <!-- </div> -->
             </section>
         </section>
     </div>
@@ -39,7 +39,8 @@ export default {
   },
   data: function () {
     return {
-      data: []
+      data: [],
+      filterText: ''
     }
   },
   mounted: function () {
@@ -58,6 +59,12 @@ export default {
     },
     goToPage (id) {
       this.$router.push({ path: `/home/transfer/id/${id}` })
+    }
+  },
+  computed: {
+    filteredNames () {
+      const filter = new RegExp(this.filterText, 'i')
+      return this.data.filter(el => el.name.match(filter))
     }
   }
 }

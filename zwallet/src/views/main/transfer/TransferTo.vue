@@ -13,7 +13,7 @@
           </div>
           <form class="input-amount" action="submit">
             <input type="number" placeholder="0.00" v-model="amount">
-            <p>Rp. {{balance - amount}} Available</p>
+            <p>Rp. {{balanceCurrent}} Available</p>
             <div class="notes d-flex align-items-start">
               <img src="../../../assets/home/pen-inactive.svg" alt="">
               <input type="text" placeholder="Add some notes" v-model="notes">
@@ -98,6 +98,11 @@ export default {
             balance: parseAmount
           })
         })
+    }
+  },
+  computed: {
+    balanceCurrent: function () {
+      return this.balance - this.amount
     }
   }
 }
