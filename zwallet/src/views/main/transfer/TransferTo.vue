@@ -12,15 +12,15 @@
             <p class="type-p">Type the amount you want to transfer and then press continue to the next steps.</p>
           </div>
           <form class="input-amount" action="submit">
-            <input type="number" placeholder="0.00" v-model="amountTransfer">
-            <p>Rp. {{balance}} Available</p>
+            <input type="number" placeholder="0.00" v-model="amount">
+            <p>Rp. {{balance - amount}} Available</p>
             <div class="notes d-flex align-items-start">
               <img src="../../../assets/home/pen-inactive.svg" alt="">
               <input type="text" placeholder="Add some notes" v-model="notes">
             </div>
           </form>
           <div class="d-flex justify-content-end mt-5">
-            <button class="btn btn-primary mr-4 btn-custom" type="submit">Confirm</button>
+            <button class="btn btn-primary mr-4 btn-custom" type="submit" @click.prevent="makeTransfer">Confirm</button>
           </div>
         </section>
       </section>
@@ -31,6 +31,12 @@
 <script>
 import containertransfer from '../../../components/main/transfer/ContainerTransfer'
 import axios from 'axios'
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
+
+const router = new VueRouter()
 
 export default {
   name: 'Transfer',
@@ -42,16 +48,17 @@ export default {
       id: 0,
       name: '',
       phone: '',
+      amount: null,
       balance: 0,
-      amountTransfer: null,
-      notes: ''
+      notes: '',
+      senderId: 3
     }
   },
   mounted: function () {
-    this.getAllUser()
+    this.getOneUser()
   },
   methods: {
-    getAllUser () {
+    getOneUser () {
       axios.get(`${process.env.VUE_APP_BASE_URL}users?id=${this.$route.params.id}`)
         .then(res => {
           const phonenum = res.data.result[0].phone
@@ -63,6 +70,21 @@ export default {
         })
         .catch(err => {
           console.log(err)
+        })
+    },
+    makeTransfer () {
+      const data = {
+        id_receiver: this.id,
+        id_transfer: this.senderId,
+        amount: this.amount,
+        notes: this.notes
+      }
+      const balance = this.balance - this.amount
+      axios.post(`${process.env.VUE_APP_BASE_URL}transaction`, data)
+        .then(res => { console.log(res) })
+      axios.put(`${process.env.VUE_APP_BASE_URL}users/${this.senderId}`, balance)
+        .then(res => {
+          router.go(-1)
         })
     }
   }

@@ -15,7 +15,7 @@
                         </div>
                     </label>
                     </form>
-                    <button class="btn change" type="submit" @click="changePhone">Add Phone Number</button>
+                    <button class="btn change" type="submit" @click.prevent="changePhone">Add Phone Number</button>
                 </div>
   </div>
 </template>
