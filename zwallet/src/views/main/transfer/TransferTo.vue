@@ -36,7 +36,7 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter()
+// const router = new VueRouter()
 
 export default {
   name: 'Transfer',
@@ -55,38 +55,51 @@ export default {
     }
   },
   mounted: function () {
-    this.getOneUser()
+    this.getAllUser()
   },
   methods: {
-    getOneUser () {
-      axios.get(`${process.env.VUE_APP_BASE_URL}users?id=${this.$route.params.id}`)
+    getAllUser () {
+      axios.get(`${process.env.VUE_APP_BASE_URL}users`)
         .then(res => {
-          const phonenum = res.data.result[0].phone
-          this.id = res.data.result[0].id
-          this.name = res.data.result[0].name
-          this.phone = `+62 ${phonenum}`
-          this.balance = res.data.result[0].balance
-          console.log(res.data.result[0].name)
+          const data = res.data.result
+          const idReceiver = this.$route.params.id
+          const parseIdReceiver = parseInt(idReceiver)
+          let name = this.name
+          data.forEach(function (item, index) {
+            if (item.id === parseIdReceiver) {
+              name = item.name
+              console.log(`in berhasil ${parseIdReceiver} ${name}`)
+            } else {
+              console.log('not in')
+            }
+          })
+          // console.log(data)
+          // const phonenum = res.data.result[0].phone
+          // this.id = res.data.result[0].id
+          // this.name = res.data.result[0].name
+          // this.phone = `+62 ${phonenum}`
+          // this.balance = res.data.result[0].balance
+          // console.log(res.data.result[0].name)
         })
         .catch(err => {
           console.log(err)
         })
-    },
-    makeTransfer () {
-      const data = {
-        id_receiver: this.id,
-        id_transfer: this.senderId,
-        amount: this.amount,
-        notes: this.notes
-      }
-      const balance = this.balance - this.amount
-      axios.post(`${process.env.VUE_APP_BASE_URL}transaction`, data)
-        .then(res => { console.log(res) })
-      axios.put(`${process.env.VUE_APP_BASE_URL}users/${this.senderId}`, balance)
-        .then(res => {
-          router.go(-1)
-        })
     }
+    // makeTransfer () {
+    //   const data = {
+    //     id_receiver: this.id,
+    //     id_transfer: this.senderId,
+    //     amount: this.amount,
+    //     notes: this.notes
+    //   }
+    //   const balance = this.balance - this.amount
+    //   axios.post(`${process.env.VUE_APP_BASE_URL}transaction`, data)
+    //     .then(res => { console.log(res) })
+    //   axios.put(`${process.env.VUE_APP_BASE_URL}users/${this.senderId}`, balance)
+    //     .then(res => {
+    //       router.go(-1)
+    //     })
+    // }
   }
 }
 </script>
