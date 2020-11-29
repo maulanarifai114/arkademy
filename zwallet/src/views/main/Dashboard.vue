@@ -71,6 +71,7 @@
             <p class="transaction-h">Transaction History</p>
             <a class="see-all" href="#">See all</a>
         </header>
+        <historytrans :nameprof="trans.name" :amount="trans.amount"></historytrans>
         <section class="container-history">
             <img src="../../assets/home/samuel-suhi.png" alt="profile-h" class="profile-h">
             <div class="container-name-purpose">
@@ -79,7 +80,7 @@
             </div>
             <div class="amount-plus">+Rp50.000</div>
         </section>
-        <section class="container-history">
+        <!-- <section class="container-history">
             <img src="../../assets/home/netflix.png" alt="profile-h" class="profile-h">
             <div class="container-name-purpose">
                 <div class="name cut-text">Netflix</div>
@@ -102,21 +103,29 @@
                 <div class="purpose">Subscription</div>
             </div>
             <div class="amount-minus">-Rp249.000</div>
-        </section>
+        </section> -->
     </aside>
 </section>
   </div>
 </template>
 
 <script>
+import historytrans from '../../components/main/dashboard/ContainerHistory'
 import axios from 'axios'
 
 export default {
   name: 'Dashboard',
+  components: {
+    historytrans
+  },
   data: function () {
     return {
       id: 3,
-      data: []
+      data: [],
+      trans: {
+        name: 'Alfito',
+        amount: 20000
+      }
     }
   },
   mounted: function () {
