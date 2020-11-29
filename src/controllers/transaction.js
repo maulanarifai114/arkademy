@@ -76,8 +76,8 @@ const trans = {
 
   transferAmount: (req, res) => {
     const balance = req.body.balance
-    const id = req.body.id
-    modelUser.transferAmount(id, balance)
+    const id = req.params.id
+    transModel.transferAmount(id, balance)
       .then(result => {
         const resultTransfer = result
         if (resultTransfer.affectedRows == 0) {

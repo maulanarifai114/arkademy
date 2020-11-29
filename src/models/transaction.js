@@ -61,6 +61,18 @@ const trans = {
         }
       })
     })
+  },
+
+  transferBegin: () => {
+    return new Promise((resolve, reject) => {
+      connection.query(`BEGIN`, (error, results) => {
+        if (!error) {
+          resolve(results)
+        } else {
+          reject(error)
+        }
+      })
+    })
   }
 }
 module.exports = trans
