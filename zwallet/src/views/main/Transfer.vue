@@ -17,7 +17,7 @@
             <section class="container-all-receiver">
                 <div v-for="x in data" :key="x.id" >
                   <div @click="goToPage(x.id)">
-                    <containertransfer :nameprof="x.name" :phonenumber="'+62 ' + x.phone"></containertransfer>
+                    <containertransfer :nameprof="x.name" :phonenumber="'+62 ' + x.phone" v-if="x.id !== 3"></containertransfer>
                   </div>
                   <!-- <router-link :to="'/home/transfer/' + x.id"> -->
                   <!-- </router-link> -->
