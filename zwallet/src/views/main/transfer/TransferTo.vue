@@ -62,12 +62,14 @@ export default {
       axios.get(`${process.env.VUE_APP_BASE_URL}users`)
         .then(res => {
           const idReceiver = this.$route.params.id
-          const phonenum = res.data.result[`${idReceiver}`].phone
-          this.id = res.data.result[`${idReceiver}`].id
-          this.name = res.data.result[`${idReceiver}`].name
+          const phonenum = res.data.result[`${idReceiver - 1}`].phone
+
+          this.id = res.data.result[`${idReceiver - 1}`].id
+          this.name = res.data.result[`${idReceiver - 1}`].name
           this.phone = `+62 ${phonenum}`
-          this.balance = res.data.result[`${idReceiver}`].balance
-          console.log(res.data.result[`${idReceiver}`].name)
+          this.balance = res.data.result[`${idReceiver - 1}`].balance
+
+          console.log(res.data.result[`${idReceiver - 1}`].name)
         })
         .catch(err => {
           console.log(err)
