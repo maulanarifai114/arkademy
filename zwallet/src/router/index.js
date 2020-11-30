@@ -73,6 +73,7 @@ const routes = [
     path: '/home',
     name: 'Home',
     component: Home,
+    redirect: '/home/dashboard',
     children: [
       {
         path: 'dashboard',
