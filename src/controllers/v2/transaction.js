@@ -38,7 +38,7 @@ const trans = {
       id_receiver
     }
 
-    if (data.amount == '' || data.notes == '' || data.id_transfer == '' || data.id_receiver == '') {
+    if (data.amount == '' && data.notes == '' && data.id_transfer == '' && data.id_receiver == '') {
       return helper.reject(res, data, 400, {
         message: 'can\'t add data, some or all data is empty'
       })

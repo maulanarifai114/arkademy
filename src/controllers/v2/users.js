@@ -61,7 +61,7 @@ const users = {
       balance
     }
 
-    if (data.name == '' || data.phone == '' || data.username == '' || data.email == '' || data.password == '' || data.balance == '') {
+    if (data.name == '' && data.phone == '' && data.username == '' && data.email == '' && data.password == '' && data.balance == '') {
       return helper.reject(res, data, 400, {
         message: 'can\'t add data, some or all data is empty'
       })
