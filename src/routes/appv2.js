@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
-const routerUsers = require('./users')
-const routerTransaction = require('./transaction')
+const routerUsers = require('../routes/v2/users')
+const routerTransaction = require('../routes/v2/transaction')
 
 router
   .use('/users', routerUsers)
