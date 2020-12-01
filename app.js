@@ -7,6 +7,7 @@ const PORT = process.env.PORT
 const routerUsers = require('./src/routes/users')
 const routerTransaction = require('./src/routes/transaction')
 const routerServer = require('./src/routes/app')
+const routerServerV2 = require('./src/routes/appv2')
 const bodyParser = require('body-parser')
 const helper = require('./src/helpers/help')
 
@@ -37,6 +38,9 @@ app.use(mymiddleware)
 app.use('/', routerServer)
 app.use('/users', routerUsers)
 app.use('/transaction', routerTransaction)
+
+app.use('/v2', routerServerV2)
+// app.use('/v2/users', routerUsers)
 
 app.use('*', (req, res) => {
   helper.reject(res, null, 404, {
