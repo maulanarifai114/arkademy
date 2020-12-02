@@ -30,6 +30,7 @@ const users = {
               username,
               email,
               password: hash,
+              roleid: uuidv4()
             }
 
             if (data.username == '' || data.email == '' || data.password == '') {
@@ -54,11 +55,25 @@ const users = {
   },
 
   loginUser: (req, res) => {
+
+    // Take data from body
     const {
       email,
       password
     } = req.body
 
+    // Error handling
+    const data = {
+      email,
+      password
+    }
+    if (data.email == '' || data.password == '') {
+      return helper.reject(res, null, 401, {
+        message: `can't add data, some or all data is empty`
+      })
+    }
+
+    // Check user from model
     modelUser.checkUser(email)
       .then((result) => {
         const user = result[0]
@@ -71,18 +86,31 @@ const users = {
           delete user.password
 
           // JSON Web Token
-          jwt.sign({
+          const payload = {
             userID: user.id,
             email: user.email,
             roleID: user.roleid
-          }, process.env.SECRET_KEY, {
+          }
+          const option = {
             expiresIn: '24h'
-          }, function (err, token) {
+          }
+          const secret = process.env.SECRET_KEY
+          const admin = process.env.ROLE_ADMIN
+
+          const getToken = function (err, token) {
             user.token = token
+            if (user.roleid === admin) {
+              user.message = 'Welcome admin'
+            }
             return helper.response(res, user, 200, null)
-          });
+          }
+
+          jwt.sign(payload, secret, option, getToken);
 
         });
+      })
+      .catch(err => {
+        console.log(err)
       })
   }
 }
