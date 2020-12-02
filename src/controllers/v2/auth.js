@@ -56,7 +56,9 @@ const users = {
         })
       })
 
+  },
 
+  loginUser: (req, res) => {
 
   }
 }

@@ -7,6 +7,7 @@ router
   .get('/', usersControl.getAllUsers)
   // .post('/', usersControl.insertUser)
   .post('/register', usersCheck.signUpUser)
+  .post('/login', usersCheck.loginUser)
   .put('/:id', usersControl.updateUser)
   .delete('/:id', usersControl.deleteUser)
   .delete('/phone/:id', usersControl.deletePhone)
