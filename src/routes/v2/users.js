@@ -1,10 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const usersControl = require('../../controllers/v2/users')
+const usersCheck = require('../../controllers/v2/auth')
 
 router
   .get('/', usersControl.getAllUsers)
-  .post('/', usersControl.insertUser)
+  // .post('/', usersControl.insertUser)
+  .post('/register', usersCheck.signUpUser)
   .put('/:id', usersControl.updateUser)
   .delete('/:id', usersControl.deleteUser)
   .delete('/phone/:id', usersControl.deletePhone)

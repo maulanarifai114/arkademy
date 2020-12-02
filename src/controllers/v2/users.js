@@ -43,30 +43,6 @@ const users = {
 
   // Masukan User Baru
   insertUser: (req, res) => {
-    const {
-      name,
-      phone,
-      username,
-      email,
-      password,
-      balance
-    } = req.body
-
-    const data = {
-      name,
-      phone,
-      username,
-      email,
-      password,
-      balance
-    }
-
-    if (data.name == '' && data.phone == '' && data.username == '' && data.email == '' && data.password == '' && data.balance == '') {
-      return helper.reject(res, data, 400, {
-        message: 'can\'t add data, some or all data is empty'
-      })
-    }
-
     modelUser.insertUser(data)
       .then(result => {
         // const resultInsertUser = result

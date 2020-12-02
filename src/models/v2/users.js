@@ -95,5 +95,17 @@ const users = {
     })
   },
 
+  checkUser: (email) => {
+    return new Promise((resolve, reject) => {
+      connection.query('SELECT * FROM users WHERE email = ?', email, (error, results) => {
+        if (!error) {
+          resolve(results)
+        } else {
+          reject(error)
+        }
+      })
+    })
+  },
+
 }
 module.exports = users
