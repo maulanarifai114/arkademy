@@ -57,14 +57,15 @@ const users = {
 
   // Update User
   updateUser: (req, res) => {
-    const id = req.params.id
+    // const id = req.params.id
     const {
       name,
       phone,
       username,
       email,
       password,
-      balance
+      balance,
+      image
     } = req.body
 
     const data = {}
@@ -86,6 +87,9 @@ const users = {
     }
     if (balance) {
       data.balance = balance
+    }
+    if (image) {
+      data.image = image
     }
 
     modelUser.updateUser(id, data)
