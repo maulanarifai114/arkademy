@@ -11,12 +11,6 @@ const routerServerV2 = require('./src/routes/appv2')
 const bodyParser = require('body-parser')
 const helper = require('./src/helpers/help')
 
-// membuat middleware
-const mymiddleware = (req, res, next) => {
-  console.log('menjalankan my middleware')
-  next()
-}
-
 // Enable CORS
 app.use(cors())
 
@@ -30,9 +24,6 @@ app.use(bodyParser.json())
 
 // add morgan
 app.use(morgan('dev'))
-
-// add mymiddleware
-app.use(mymiddleware)
 
 // menggunakan router
 app.use('/', routerServer)

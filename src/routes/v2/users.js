@@ -7,7 +7,7 @@ const middleware = require('../../middleware/v2/auth')
 router
   .post('/register', usersLog.signUpUser)
   .post('/login', usersLog.loginUser)
-  .get('/', usersControl.getAllUsers)
+  .get('/', middleware.verifyAccess, usersControl.getAllUsers)
   .put('/:id', usersControl.updateUser)
   .delete('/:id', usersControl.deleteUser)
   .delete('/phone/:id', usersControl.deletePhone)
