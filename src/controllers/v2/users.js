@@ -1,5 +1,6 @@
 const modelUser = require('../../models/v2/users')
 const helper = require('../../helpers/help')
+const jwt = require('jsonwebtoken')
 const users = {
 
   // getAllUsers, getUserByName, getUserByPhone
@@ -10,6 +11,7 @@ const users = {
     const page = req.query.page
     const limit = req.query.limit
     const offset = (page - 1) * limit
+
     modelUser.getAllUsers(name, phone, offset, limit, id)
       .then(result => {
         const resultAllUsers = result
@@ -43,6 +45,15 @@ const users = {
 
   // Masukan User Baru
   insertUser: (req, res) => {
+    const {
+      name,
+    } = req.body
+
+    const data = {
+      name,
+      photo: `${process.env.BASE_URL}/upload/${req.file.filename}`
+    }
+
     modelUser.insertUser(data)
       .then(result => {
         // const resultInsertUser = result

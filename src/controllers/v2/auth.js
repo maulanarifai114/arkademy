@@ -15,22 +15,24 @@ const users = {
       email,
       password,
     } = req.body
+    // const {image} = req.file 
 
     modelUser.checkUser(email)
       .then((result) => {
         console.log('ini resultnya' + result)
         if (result.length > 0) return helper.reject(res, null, 401, {
-          error: 'email sudah ada'
+          error: 'email already exist'
         })
 
         bcrypt.genSalt(10, function (err, salt) {
           bcrypt.hash(password, salt, function (err, hash) {
             const data = {
               id,
+              roleid: uuidv4(),
+              photo: `${process.env.BASE_URL}/upload/${req.file.filename}`,
               username,
               email,
               password: hash,
-              roleid: uuidv4()
             }
 
             if (data.username == '' || data.email == '' || data.password == '') {
@@ -89,7 +91,10 @@ const users = {
           const payload = {
             userID: user.id,
             email: user.email,
-            roleID: user.roleid
+            roleID: user.roleid,
+            phone: user.phone,
+            name: user.name,
+            balance: user.balance
           }
           const option = {
             expiresIn: '24h'

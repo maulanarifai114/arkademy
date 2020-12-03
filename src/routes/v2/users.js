@@ -10,13 +10,14 @@ const {
 } = require('../../middleware/v2/upload')
 
 router
-  .post('/register', usersLog.signUpUser)
+  .post('/register', uploadMulter.single('image'), usersLog.signUpUser)
+  // .post('/register', usersLog.signUpUser)
   .post('/login', usersLog.loginUser)
 
   // Verify First For Get, Post, Put, Delete
   .get('/', verifyAccess, usersControl.getAllUsers)
-  .post('/', uploadMulter.single('avatar'), usersControl.updateUser)
-  .put('/:id', verifyAccess, usersControl.updateUser)
+  .post('/', uploadMulter.single('image'), usersControl.insertUser)
+  .put('/:id', verifyAccess, uploadMulter.single('image'), usersControl.updateUser)
   .delete('/:id', verifyAccess, usersControl.deleteUser)
   .delete('/phone/:id', verifyAccess, usersControl.deletePhone)
 module.exports = router

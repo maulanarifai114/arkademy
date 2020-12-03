@@ -31,6 +31,8 @@ app.use('/users', routerUsers)
 app.use('/transaction', routerTransaction)
 
 app.use('/v2', routerServerV2)
+app.use('/upload', express.static('./upload'))
+
 // app.use('/v2/users', routerUsers)
 
 app.use('*', (req, res) => {
