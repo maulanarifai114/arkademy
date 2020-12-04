@@ -8,6 +8,9 @@ const {
 const {
   uploadMulter
 } = require('../../middleware/v2/upload')
+const {
+  validation
+} = require('../../middleware/v2/validation')
 
 router
   .post('/register', uploadMulter.single('image'), usersLog.signUpUser)
@@ -17,7 +20,7 @@ router
   // Verify First For Get, Post, Put, Delete
   .get('/', verifyAccess, usersControl.getAllUsers)
   .post('/', uploadMulter.single('image'), usersControl.insertUser)
-  .put('/', verifyAccess, uploadMulter.single('image'), usersControl.updateUser)
+  .put('/', verifyAccess, uploadMulter.single('image'), validation, usersControl.updateUser)
   .delete('/:id', verifyAccess, usersControl.deleteUser)
   .delete('/phone/:id', verifyAccess, usersControl.deletePhone)
 module.exports = router
