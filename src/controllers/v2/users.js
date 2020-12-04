@@ -1,6 +1,7 @@
 const modelUser = require('../../models/v2/users')
 const helper = require('../../helpers/help')
-const jwt = require('jsonwebtoken')
+// const jwt = require('jsonwebtoken')
+const multer = require('multer')
 const users = {
 
   // getAllUsers, getUserByName, getUserByPhone
@@ -11,6 +12,12 @@ const users = {
     const page = req.query.page
     const limit = req.query.limit
     const offset = (page - 1) * limit
+
+    // const authorization = req.headers.authorization
+    // let token = authorization.split(" ")
+    // token = token[1]
+    // const decoded = jwt.decode(token);
+    // console.log('ini decoded header', decoded);
 
     modelUser.getAllUsers(name, phone, offset, limit, id)
       .then(result => {
@@ -76,8 +83,9 @@ const users = {
       email,
       password,
       balance,
-      image
     } = req.body
+
+    const image = req.file
 
     const data = {}
 
@@ -100,8 +108,10 @@ const users = {
       data.balance = balance
     }
     if (image) {
-      data.image = image
+      data.photo = `${process.env.BASE_URL}/upload/${req.file.filename}`
     }
+
+    const id = req.userID
 
     modelUser.updateUser(id, data)
       .then((result) => {

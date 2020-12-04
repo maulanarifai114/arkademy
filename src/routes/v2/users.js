@@ -17,7 +17,7 @@ router
   // Verify First For Get, Post, Put, Delete
   .get('/', verifyAccess, usersControl.getAllUsers)
   .post('/', uploadMulter.single('image'), usersControl.insertUser)
-  .put('/:id', verifyAccess, uploadMulter.single('image'), usersControl.updateUser)
+  .put('/', verifyAccess, uploadMulter.single('image'), usersControl.updateUser)
   .delete('/:id', verifyAccess, usersControl.deleteUser)
   .delete('/phone/:id', verifyAccess, usersControl.deletePhone)
 module.exports = router

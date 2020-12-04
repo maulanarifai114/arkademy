@@ -29,9 +29,12 @@ exports.verifyAccess = (req, res, next) => {
         })
       }
     }
-    console.log('isi decode', decoded)
     req.userID = decoded.userID // Get ID by Req, then send to next middleware
     req.roleID = decoded.roleID // Get RoleID by Req, then send to next middleware
+    req.email = decoded.email
+    req.name = decoded.name
+    req.phone = decoded.phone
+    req.balance = decoded.balance
     next()
   })
 }
