@@ -12,13 +12,14 @@ const {
 const {
   validation
 } = require('../../middleware/v2/validation')
+const redis = require('../../middleware/v2/redis')
 
 router
   .post('/register', uploadMulter.single('image'), usersLog.signUpUser)
   .post('/login', usersLog.loginUser)
 
   // Verify First For Get, Post, Put, Delete
-  .get('/', verifyAccess, usersControl.getAllUsers)
+  .get('/', verifyAccess, redis.cacheAllUsers, usersControl.getAllUsers)
   .post('/', uploadMulter.single('image'), validation, usersControl.insertImage)
   .put('/', verifyAccess, uploadMulter.single('image'), validation, usersControl.updateUser)
   .delete('/', verifyRole, usersControl.deleteUser)

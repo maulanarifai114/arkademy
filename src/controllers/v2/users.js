@@ -21,7 +21,7 @@ const users = {
     modelUser.getAllUsers(name, phone, offset, limit, id)
       .then(result => {
         const resultAllUsers = result
-        client.setex("getAllUsers", JSON.stringify(resultAllUsers));
+        client.setex("getAllUsers", 60 * 60 * 12, JSON.stringify(resultAllUsers));
         if (resultAllUsers.length == 0 && name) {
           helper.reject(res, resultAllUsers, 404, {
             message: 'name not found'
