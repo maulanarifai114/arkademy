@@ -2,6 +2,10 @@ const modelUser = require('../../models/v2/users')
 const helper = require('../../helpers/help')
 // const jwt = require('jsonwebtoken')
 const multer = require('multer')
+const {
+  v4: uuidv4
+} = require('uuid');
+
 const users = {
 
   // getAllUsers, getUserByName, getUserByPhone
@@ -51,21 +55,22 @@ const users = {
   },
 
   // Masukan User Baru
-  insertUser: (req, res) => {
-    const {
-      name,
-    } = req.body
+  insertImage: (req, res) => {
+    const id = uuidv4()
+    const image = req.file
 
     const data = {
-      name,
-      photo: `${process.env.BASE_URL}/upload/${req.file.filename}`
+      id
     }
 
-    modelUser.insertUser(data)
+    if (image) {
+      data.photo = `${process.env.BASE_URL}/upload/${req.file.filename}`
+    }
+
+    modelUser.insertImage(data)
       .then(result => {
-        // const resultInsertUser = result
         helper.response(res, {
-          message: 'success add data'
+          message: 'success add image'
         }, 200, null)
       })
       .catch((err) => {

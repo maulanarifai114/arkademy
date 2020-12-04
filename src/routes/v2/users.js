@@ -3,7 +3,8 @@ const router = express.Router()
 const usersControl = require('../../controllers/v2/users')
 const usersLog = require('../../controllers/v2/auth')
 const {
-  verifyAccess
+  verifyAccess,
+  verifyRole
 } = require('../../middleware/v2/auth')
 const {
   uploadMulter
@@ -14,13 +15,12 @@ const {
 
 router
   .post('/register', uploadMulter.single('image'), usersLog.signUpUser)
-  // .post('/register', usersLog.signUpUser)
   .post('/login', usersLog.loginUser)
 
   // Verify First For Get, Post, Put, Delete
   .get('/', verifyAccess, usersControl.getAllUsers)
-  .post('/', uploadMulter.single('image'), usersControl.insertUser)
+  .post('/', uploadMulter.single('image'), validation, usersControl.insertImage)
   .put('/', verifyAccess, uploadMulter.single('image'), validation, usersControl.updateUser)
-  .delete('/:id', verifyAccess, usersControl.deleteUser)
+  .delete('/', verifyRole, usersControl.deleteUser)
   .delete('/phone/:id', verifyAccess, usersControl.deletePhone)
 module.exports = router

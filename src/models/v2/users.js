@@ -59,6 +59,18 @@ const users = {
     })
   },
 
+  insertImage: (data) => {
+    return new Promise((resolve, reject) => {
+      connection.query('INSERT INTO image SET ?', data, (error, results) => {
+        if (!error) {
+          resolve(results)
+        } else {
+          reject(error)
+        }
+      })
+    })
+  },
+
   updateUser: (id, data) => {
     return new Promise((resolve, reject) => {
       connection.query('UPDATE users SET ? WHERE id=?', [data, id], (error, results) => {

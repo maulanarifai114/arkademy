@@ -15,7 +15,6 @@ const valid = (req, res, next) => {
       error: 'File is too big'
     })
   }
-  console.log(req.file)
 
   next()
 }
