@@ -15,11 +15,9 @@ const users = {
       email,
       password,
     } = req.body
-    // const {image} = req.file 
 
     modelUser.checkUser(email)
       .then((result) => {
-        console.log('ini resultnya' + result)
         if (result.length > 0) return helper.reject(res, null, 401, {
           error: 'email already exist'
         })

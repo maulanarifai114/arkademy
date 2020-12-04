@@ -74,6 +74,10 @@ exports.verifyRole = (req, res, next) => {
       req.phone = decoded.phone
       req.balance = decoded.balance
       next()
+    } else {
+      return helper.response(res, null, 401, {
+        message: 'you are not an admin'
+      })
     }
   })
 }

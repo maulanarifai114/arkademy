@@ -1,7 +1,8 @@
 const modelUser = require('../../models/v2/users')
 const helper = require('../../helpers/help')
-// const jwt = require('jsonwebtoken')
-const multer = require('multer')
+const redis = require("redis");
+const client = redis.createClient(6379);
+
 const {
   v4: uuidv4
 } = require('uuid');
@@ -17,15 +18,10 @@ const users = {
     const limit = req.query.limit
     const offset = (page - 1) * limit
 
-    // const authorization = req.headers.authorization
-    // let token = authorization.split(" ")
-    // token = token[1]
-    // const decoded = jwt.decode(token);
-    // console.log('ini decoded header', decoded);
-
     modelUser.getAllUsers(name, phone, offset, limit, id)
       .then(result => {
         const resultAllUsers = result
+        client.setex("getAllUsers", JSON.stringify(resultAllUsers));
         if (resultAllUsers.length == 0 && name) {
           helper.reject(res, resultAllUsers, 404, {
             message: 'name not found'
@@ -137,7 +133,10 @@ const users = {
 
   // Delete User
   deleteUser: (req, res) => {
-    const id = req.params.id
+    const {
+      id
+    } = req.body
+
     modelUser.deleteUser(id)
       .then(result => {
         const resultDeleteUser = result
