@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activate Account</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Quicksand';
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      margin: 0 0 20px 0;
+      padding: 10px;
+      border-color: rgba(0, 0, 0, 0);
+      /* border-radius: 10px; */
+      background-color: rgb(240, 225, 255);
+    }
+
+    .input {
+      margin: auto;
+      width: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .wrapper {
+      height: fit-content;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    button {
+      padding: 10px;
+      border-color: rgba(0, 0, 0, 0);
+      background-color: rebeccapurple;
+      color: white;
+      outline: none;
+    }
+
+    button:hover {
+      background-color: rgb(60, 20, 100);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <form
+      action="http://localhost:4000/v2/users/confirm/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxMTQyNmRjMS02NGE4LTQ1OGMtOTNjNC01YmU2NGU1ZDRlYmIiLCJpc1ZlcmlmaWVkIjoidHJ1ZSIsInRva2VuQWN0IjoiZTA0OGUzZmItMWM1Ny00Nzg4LWI0YmYtMDMxYmE4NTJmODI0IiwiaWF0IjoxNjA3MTczMDUwLCJleHAiOjE2MDcyNTk0NTB9.aVlrxZ0W4PNWT1h8W058Z65GVkZmL_NEyRJTzldAs08"
+      method="POST">
+      <div class="input">
+        <p>Press the button to activate your account </p>
+        <input type="text"
+          value="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiIxMTQyNmRjMS02NGE4LTQ1OGMtOTNjNC01YmU2NGU1ZDRlYmIiLCJpc1ZlcmlmaWVkIjoidHJ1ZSIsInRva2VuQWN0IjoiZTA0OGUzZmItMWM1Ny00Nzg4LWI0YmYtMDMxYmE4NTJmODI0IiwiaWF0IjoxNjA3MTczMDUwLCJleHAiOjE2MDcyNTk0NTB9.aVlrxZ0W4PNWT1h8W058Z65GVkZmL_NEyRJTzldAs08"
+          disabled>
+        <button type="submit">Activate</button>
+      </div>
+    </form>
+  </div>
+  <script>
+
+  </script>
+</body>
+
+</html>

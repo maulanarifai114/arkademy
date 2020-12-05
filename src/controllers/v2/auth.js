@@ -65,7 +65,7 @@ const users = {
                 const getToken = function (err, token) {
                   data.token = token
                   console.log(data);
-                  sendEmail(data.email, `${process.env.BASE_URL}/v2/users/confirm/${token}`)
+                  sendEmail(data.email, `${token}`)
                   return helper.response(res, user, 200, null)
                 }
 
