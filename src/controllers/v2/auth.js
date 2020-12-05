@@ -108,6 +108,13 @@ const users = {
       .then((result) => {
         const user = result[0]
 
+        // Checking Verified
+        if (user.isVerified === 'false') {
+          return helper.response(res, null, 401, {
+            message: 'You must verified your account first'
+          })
+        }
+
         // Compare Password
         bcrypt.compare(password, user.password, function (err, resCheck) {
           if (!resCheck) return helper.response(res, null, 401, {
@@ -135,11 +142,6 @@ const users = {
             user.token = token
             if (user.roleid === admin) {
               user.message = 'Welcome admin'
-            }
-            if (user.isVerified === 'false') {
-              return helper.response(res, null, 401, {
-                message: 'You must verified your account first'
-              })
             }
             return helper.response(res, user, 200, null)
           }
