@@ -17,7 +17,7 @@ const redis = require('../../middleware/v2/redis')
 router
   .post('/register', usersLog.signUpUser)
   .post('/login', usersLog.loginUser)
-  .post('/email', usersLog.sendEmailer)
+  .put('/confirm/:token', usersLog.sendEmailer)
 
   // Verify First For Get, Post, Put, Delete
   .get('/', verifyAccess, redis.cacheAllUsers, usersControl.getAllUsers)
