@@ -2,13 +2,15 @@ const modelUser = require('../../models/v2/users')
 const helper = require('../../helpers/help')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-
+const {
+  sendEmail
+} = require('../../helpers/email')
 const {
   v4: uuidv4
 } = require('uuid');
 
 const users = {
-  signUpUser: (req, res) => {
+  signUpUser: (req, res, next) => {
     const id = uuidv4()
     const {
       username,
@@ -114,6 +116,27 @@ const users = {
       })
       .catch(err => {
         console.log(err)
+      })
+  },
+
+  sendEmailer: (req, res) => {
+    // const email = req.body.email
+    // const message = req.body.message
+    const {
+      email,
+      message
+    } = req.body
+    sendEmail(email, message)
+      .then((result) => {
+        console.log('ini res = ', result)
+        return helper.response(res, {
+          message: 'send email success'
+        }, 200, null)
+      })
+      .catch((err) => {
+        return helper.response(res, null, 500, {
+          message: 'error send email'
+        })
       })
   }
 }
