@@ -97,7 +97,7 @@ const users = {
 
   deletePhone: (id) => {
     return new Promise((resolve, reject) => {
-      connection.query(`UPDATE users SET phone = '' WHERE id = ?`, id, (error, results) => {
+      connection.query('UPDATE users SET phone = \'\' WHERE id = ?', id, (error, results) => {
         if (!error) {
           resolve(results)
         } else {
@@ -117,7 +117,7 @@ const users = {
         }
       })
     })
-  },
+  }
 
 }
 module.exports = users

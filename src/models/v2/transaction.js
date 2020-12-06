@@ -50,7 +50,7 @@ const trans = {
 
   transferAmount: (id, balance) => {
     return new Promise((resolve, reject) => {
-      connection.query(`UPDATE users SET balance = balance + ? WHERE id = ?`, [balance, id], (error, results) => {
+      connection.query('UPDATE users SET balance = balance + ? WHERE id = ?', [balance, id], (error, results) => {
         if (!error) {
           resolve(results)
         } else {

@@ -6,18 +6,19 @@ const {
 } = require('../../helpers/help')
 
 exports.cacheAllUsers = (req, res, next) => {
-  client.get("getAllUsers", function (err, data) {
+  client.get('getAllUsers', function (err, data) {
     if (data !== null) {
       const result = JSON.parse(data)
       return response(res, result, 200, null)
     } else {
+      console.log(err)
       next()
     }
-  });
+  })
 }
 
-exports.delCacheAllUsers = (req, res, nex) => {
-  client.del("getAllUsers")
+exports.delCacheAllUsers = (req, res, next) => {
+  client.del('getAllUsers')
   next()
 }
 

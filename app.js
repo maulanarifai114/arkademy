@@ -4,10 +4,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 const app = express()
 const PORT = process.env.PORT
-const routerUsers = require('./src/routes/users')
-const routerTransaction = require('./src/routes/transaction')
-const routerServer = require('./src/controllers/v2/appv2')
-const routerServerV2 = require('./src/routes/appv2')
+const routerServerV2 = require('./src/routes/v2/appv2')
 const bodyParser = require('body-parser')
 const helper = require('./src/helpers/help')
 
@@ -38,4 +35,3 @@ app.use('*', (req, res) => {
 app.listen(PORT, function () {
   console.log(`CORS-enabled web server listening on port ${PORT}`)
 })
-// app.listen(PORT, () => console.log(`server is running in port ${PORT}`))

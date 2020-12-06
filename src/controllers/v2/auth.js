@@ -7,7 +7,7 @@ const {
 } = require('../../helpers/email')
 const {
   v4: uuidv4
-} = require('uuid');
+} = require('uuid')
 
 const users = {
   signUpUser: (req, res, next) => {
@@ -16,15 +16,17 @@ const users = {
     const {
       username,
       email,
-      password,
+      password
     } = req.body
 
     modelUser.checkUser(email)
       .then((result) => {
-        console.log(result);
-        if (result.length > 0) return helper.reject(res, null, 401, {
-          error: 'email already exist'
-        })
+        console.log(result)
+        if (result.length > 0) {
+          return helper.reject(res, null, 401, {
+            error: 'email already exist'
+          })
+        }
 
         bcrypt.genSalt(10, function (err, salt) {
           bcrypt.hash(password, salt, function (err, hash) {
@@ -37,9 +39,9 @@ const users = {
               activeToken
             }
 
-            if (data.username == '' || data.email == '' || data.password == '') {
+            if (data.username === '' || data.email === '' || data.password === '') {
               return helper.reject(res, null, 401, {
-                message: `can't add data, some or all data is empty`
+                message: 'can\'t add data, some or all data is empty'
               })
             }
 
@@ -49,9 +51,9 @@ const users = {
                 const email = req.body.email
                 const id = data.id
                 const activeToken = data.activeToken
-                console.log(email);
-                console.log(data.id);
-                console.log(activeToken);
+                console.log(email)
+                console.log(data.id)
+                console.log(activeToken)
                 // JSON Web Token
                 const payload = {
                   userID: id,
@@ -64,28 +66,29 @@ const users = {
                 }
                 const getToken = function (err, token) {
                   data.token = token
-                  console.log(data);
+                  console.log(data)
                   sendEmail(data.email, `${token}`)
-                  return helper.response(res, user, 200, null)
+                  console.log(err)
+                  return helper.response(res, data, 200, null)
                 }
 
-                jwt.sign(payload, secret, option, getToken);
+                jwt.sign(payload, secret, option, getToken)
 
                 helper.response(res, {
                   message: 'success register, check your email now'
                 }, 201, null)
               })
-          });
+            console.log(err)
+          })
+          console.log(err)
         })
       })
       .catch((err) => {
         console.log(err)
       })
-
   },
 
   loginUser: (req, res) => {
-
     // Take data from body
     const {
       email,
@@ -97,9 +100,9 @@ const users = {
       email,
       password
     }
-    if (data.email == '' || data.password == '') {
+    if (data.email === '' || data.password === '') {
       return helper.reject(res, null, 401, {
-        message: `can't add data, some or all data is empty`
+        message: 'can\'t add data, some or all data is empty'
       })
     }
 
@@ -117,9 +120,11 @@ const users = {
 
         // Compare Password
         bcrypt.compare(password, user.password, function (err, resCheck) {
-          if (!resCheck) return helper.response(res, null, 401, {
-            error: 'password wrong !!'
-          })
+          if (!resCheck) {
+            return helper.response(res, null, 401, {
+              error: 'password wrong !!'
+            })
+          }
           delete user.password
           delete user.pin
 
@@ -142,13 +147,15 @@ const users = {
             user.token = token
             if (user.roleid === admin) {
               user.message = 'Welcome admin'
+            } else {
+              console.log(err)
+              return helper.response(res, user, 200, null)
             }
-            return helper.response(res, user, 200, null)
           }
 
-          jwt.sign(payload, secret, option, getToken);
-
-        });
+          jwt.sign(payload, secret, option, getToken)
+          console.log(err)
+        })
       })
       .catch(err => {
         console.log(err)
@@ -156,7 +163,6 @@ const users = {
   },
 
   sendEmailer: (req, res) => {
-
     // Get Token from Params
     const token = req.params.token
 
@@ -178,11 +184,11 @@ const users = {
         isVerified: decoded.isVerified
       }
 
-      loadIdUser = decoded.userID
+      const loadIdUser = decoded.userID
       modelUser.updateUser(loadIdUser, data)
         .then((result) => {
           const resultUpdateUser = result
-          if (resultUpdateUser.affectedRows == 0) {
+          if (resultUpdateUser.affectedRows === 0) {
             helper.reject(res, resultUpdateUser, 404, {
               message: 'id not found, can\'t update data'
             })
@@ -194,7 +200,6 @@ const users = {
         .catch((error) => {
           console.log(error)
         })
-
     })
     // const email = req.body.email
     // const message = req.body.message

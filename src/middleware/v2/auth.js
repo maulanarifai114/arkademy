@@ -2,7 +2,6 @@ const jwt = require('jsonwebtoken')
 const helper = require('../../helpers/help')
 
 exports.verifyAccess = (req, res, next) => {
-
   // Get Token from Header
   const authorization = req.headers.authorization
   if (!authorization) {
@@ -13,7 +12,7 @@ exports.verifyAccess = (req, res, next) => {
 
   // authorization = 'Bearer 234klfjsdkfjrjisjfsdf'
   // ['Bearer', 'sdfsjadfku8jdskfsdf']
-  let token = authorization.split(" ")
+  let token = authorization.split(' ')
   token = token[1]
 
   // JWT Verify
@@ -40,7 +39,6 @@ exports.verifyAccess = (req, res, next) => {
 }
 
 exports.verifyRole = (req, res, next) => {
-
   // Get Token from Header
   const authorization = req.headers.authorization
   if (!authorization) {
@@ -51,7 +49,7 @@ exports.verifyRole = (req, res, next) => {
 
   // authorization = 'Bearer 234klfjsdkfjrjisjfsdf'
   // ['Bearer', 'sdfsjadfku8jdskfsdf']
-  let token = authorization.split(" ")
+  let token = authorization.split(' ')
   token = token[1]
 
   // JWT Verify

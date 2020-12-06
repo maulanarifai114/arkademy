@@ -1,21 +1,20 @@
 const nodemailer = require('nodemailer')
 
 exports.sendEmail = (email, token) => {
-
   const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: `${process.env.EMAIL_USERNAME}`, // generated ethereal user
-      pass: `${process.env.EMAIL_PASSWORD}`, // generated ethereal password
-    },
-  });
+      pass: `${process.env.EMAIL_PASSWORD}` // generated ethereal password
+    }
+  })
 
   console.log('ini token = ', token)
   return new Promise((resolve, reject) => {
     const mailOptions = {
       from: process.env.EMAIL_USERNAME, // sender address
       to: email, // list of receivers
-      subject: "Email Activation", // Subject line
+      subject: 'Email Activation', // Subject line
       html: `
       <!DOCTYPE html>
       <html lang="en">
@@ -88,7 +87,7 @@ exports.sendEmail = (email, token) => {
         </div>
       </body>
 
-      </html>`, // html body
+      </html>` // html body
     }
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
@@ -97,6 +96,6 @@ exports.sendEmail = (email, token) => {
       } else {
         resolve(info)
       }
-    });
+    })
   })
 }
