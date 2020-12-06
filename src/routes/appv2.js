@@ -5,9 +5,9 @@ const routerTransaction = require('../routes/v2/transaction')
 const routerServer = require('../controllers/v2/appv2')
 
 router
-  .use('/', routerServer.getServer)
   .use('/users', routerUsers)
   .use('/transaction', routerTransaction)
+  .use('/', routerServer.getServer)
 module.exports = router
 
 // appv2.use('/users', routerUsers)
