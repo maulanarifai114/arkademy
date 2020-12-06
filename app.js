@@ -6,7 +6,7 @@ const app = express()
 const PORT = process.env.PORT
 const routerUsers = require('./src/routes/users')
 const routerTransaction = require('./src/routes/transaction')
-const routerServer = require('./src/routes/app')
+const routerServer = require('./src/routes/appv1')
 const routerServerV2 = require('./src/routes/appv2')
 const bodyParser = require('body-parser')
 const helper = require('./src/helpers/help')
@@ -26,9 +26,9 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 // menggunakan router
-app.use('/', routerServer)
-app.use('/users', routerUsers)
-app.use('/transaction', routerTransaction)
+// app.use('/', routerServer)
+// app.use('/users', routerUsers)
+// app.use('/transaction', routerTransaction)
 
 app.use('/v2', routerServerV2)
 app.use('/upload', express.static('./upload'))
