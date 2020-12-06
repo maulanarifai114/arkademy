@@ -18,11 +18,11 @@ exports.verifyAccess = (req, res, next) => {
   // JWT Verify
   jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
     if (err) {
-      if (err.name === 'JsonWebTokenError') {
+      if (err.name == 'JsonWebTokenError') {
         return helper.response(res, null, 401, {
           message: 'invalid token'
         })
-      } else if (err.name === 'TokenExpiredError') {
+      } else if (err.name == 'TokenExpiredError') {
         return helper.response(res, null, 401, {
           message: 'token expired'
         })
@@ -55,16 +55,16 @@ exports.verifyRole = (req, res, next) => {
   // JWT Verify
   jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
     if (err) {
-      if (err.name === 'JsonWebTokenError') {
+      if (err.name == 'JsonWebTokenError') {
         return helper.response(res, null, 401, {
           message: 'invalid token'
         })
-      } else if (err.name === 'TokenExpiredError') {
+      } else if (err.name == 'TokenExpiredError') {
         return helper.response(res, null, 401, {
           message: 'token expired'
         })
       }
-    } else if (decoded.roleID === process.env.ROLE_ADMIN) {
+    } else if (decoded.roleID == process.env.ROLE_ADMIN) {
       req.userID = decoded.userID // Get ID by Req, then send to next middleware
       req.roleID = decoded.roleID // Get RoleID by Req, then send to next middleware
       req.email = decoded.email

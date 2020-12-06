@@ -39,7 +39,7 @@ const users = {
               activeToken
             }
 
-            if (data.username === '' || data.email === '' || data.password === '') {
+            if (data.username == '' || data.email == '' || data.password == '') {
               return helper.reject(res, null, 401, {
                 message: 'can\'t add data, some or all data is empty'
               })
@@ -100,7 +100,7 @@ const users = {
       email,
       password
     }
-    if (data.email === '' || data.password === '') {
+    if (data.email == '' || data.password == '') {
       return helper.reject(res, null, 401, {
         message: 'can\'t add data, some or all data is empty'
       })
@@ -112,7 +112,7 @@ const users = {
         const user = result[0]
 
         // Checking Verified
-        if (user.isVerified === 'false') {
+        if (user.isVerified == 'false') {
           return helper.response(res, null, 401, {
             message: 'You must verified your account first'
           })
@@ -145,7 +145,7 @@ const users = {
 
           const getToken = function (err, token) {
             user.token = token
-            if (user.roleid === admin) {
+            if (user.roleid == admin) {
               user.message = 'Welcome admin'
             } else {
               console.log(err)
@@ -169,11 +169,11 @@ const users = {
     // JWT Verify
     jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
       if (err) {
-        if (err.name === 'JsonWebTokenError') {
+        if (err.name == 'JsonWebTokenError') {
           return helper.response(res, null, 401, {
             message: 'invalid token'
           })
-        } else if (err.name === 'TokenExpiredError') {
+        } else if (err.name == 'TokenExpiredError') {
           return helper.response(res, null, 401, {
             message: 'token expired'
           })
@@ -188,7 +188,7 @@ const users = {
       modelUser.updateUser(loadIdUser, data)
         .then((result) => {
           const resultUpdateUser = result
-          if (resultUpdateUser.affectedRows === 0) {
+          if (resultUpdateUser.affectedRows == 0) {
             helper.reject(res, resultUpdateUser, 404, {
               message: 'id not found, can\'t update data'
             })
