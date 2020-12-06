@@ -74,7 +74,7 @@ exports.verifyRole = (req, res, next) => {
       next()
     } else {
       return helper.response(res, null, 401, {
-        message: 'you are not an admin'
+        message: 'You are not an admin'
       })
     }
   })

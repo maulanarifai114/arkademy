@@ -112,23 +112,30 @@ const users = {
       data.photo = `${process.env.BASE_URL}/upload/${req.file.filename}`
     }
 
-    const id = req.userID
+    if (data.hasOwnProperty('name') || data.hasOwnProperty('phone') || data.hasOwnProperty('username') || data.hasOwnProperty('email') || data.hasOwnProperty('password') || data.hasOwnProperty('balance') || data.hasOwnProperty('photo')) {
+      const id = req.userID
+      modelUser.updateUser(id, data)
+        .then((result) => {
+          const resultUpdateUser = result
+          if (resultUpdateUser.affectedRows === 0) {
+            helper.reject(res, resultUpdateUser, 404, {
+              message: 'id not found, can\'t update data'
+            })
+          }
+          helper.response(res, {
+            message: 'data has been updated'
+          }, 200, null)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    } else {
+      return helper.reject(res, null, 401, {
+        message: 'can\'t add data, some or all data is empty'
+      })
+    }
 
-    modelUser.updateUser(id, data)
-      .then((result) => {
-        const resultUpdateUser = result
-        if (resultUpdateUser.affectedRows === 0) {
-          helper.reject(res, resultUpdateUser, 404, {
-            message: 'id not found, can\'t update data'
-          })
-        }
-        helper.response(res, {
-          message: 'data has been updated'
-        }, 200, null)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+
   },
 
   // Delete User

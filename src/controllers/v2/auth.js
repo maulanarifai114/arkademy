@@ -24,7 +24,7 @@ const users = {
         console.log(result)
         if (result.length > 0) {
           return helper.reject(res, null, 401, {
-            error: 'email already exist'
+            error: 'email is registered'
           })
         }
 
@@ -102,7 +102,7 @@ const users = {
     }
     if (data.email === '' || data.password === '') {
       return helper.reject(res, null, 401, {
-        message: 'can\'t add data, some or all data is empty'
+        message: 'can\'t login, some or all data is empty'
       })
     }
 
@@ -152,6 +152,7 @@ const users = {
             user.token = token
             if (user.roleid === admin) {
               user.message = 'Welcome admin'
+              return helper.response(res, user, 200, null)
             } else {
               console.log('err token =', err)
               return helper.response(res, user, 200, null)
