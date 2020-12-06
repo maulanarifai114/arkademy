@@ -25,15 +25,9 @@ app.use(bodyParser.json())
 // add morgan
 app.use(morgan('dev'))
 
-// menggunakan router
-// app.use('/', routerServer)
-// app.use('/users', routerUsers)
-// app.use('/transaction', routerTransaction)
-
+// main API
 app.use('/v2', routerServerV2)
 app.use('/upload', express.static('./upload'))
-
-// app.use('/v2/users', routerUsers)
 
 app.use('*', (req, res) => {
   helper.reject(res, null, 404, {
