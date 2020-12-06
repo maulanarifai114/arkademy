@@ -10,7 +10,7 @@ const trans = {
     transModel.getTransaction(id)
       .then(result => {
         const resultAllUsers = result
-        if (resultAllUsers.length == 0) {
+        if (resultAllUsers.length === 0) {
           helper.reject(res, resultAllUsers, 404, {
             message: 'history is empty'
           })
@@ -38,7 +38,7 @@ const trans = {
       idReceiver
     }
 
-    if (data.amount == '' && data.notes == '' && data.idTransfer == '' && data.idReceiver == '') {
+    if (data.amount === '' && data.notes === '' && data.idTransfer === '' && data.idReceiver === '') {
       return helper.reject(res, data, 400, {
         message: 'can\'t add data, some or all data is empty'
       })
@@ -60,7 +60,7 @@ const trans = {
     transModel.deleteTrans(id)
       .then(result => {
         const resultDeleteTrans = result
-        if (resultDeleteTrans.affectedRows == 0) {
+        if (resultDeleteTrans.affectedRows === 0) {
           helper.reject(res, resultDeleteTrans, 404, {
             message: 'id not found, can\'t be deleted'
           })
@@ -82,7 +82,7 @@ const trans = {
     transModel.transferAmount(id, balance)
       .then(result => {
         const resultTransfer = result
-        if (resultTransfer.affectedRows == 0) {
+        if (resultTransfer.affectedRows === 0) {
           helper.reject(res, resultTransfer, 404, {
             message: 'id not found, can\'t be transfered'
           })

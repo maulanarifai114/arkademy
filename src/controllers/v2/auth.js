@@ -39,7 +39,7 @@ const users = {
               activeToken
             }
 
-            if (data.username == '' || data.email == '' || data.password == '') {
+            if (data.username === '' || data.email === '' || data.password === '') {
               return helper.reject(res, null, 401, {
                 message: 'can\'t add data, some or all data is empty'
               })
@@ -100,7 +100,7 @@ const users = {
       email,
       password
     }
-    if (data.email == '' || data.password == '') {
+    if (data.email === '' || data.password === '') {
       return helper.reject(res, null, 401, {
         message: 'can\'t add data, some or all data is empty'
       })
@@ -110,9 +110,14 @@ const users = {
     modelUser.checkUser(email)
       .then((result) => {
         const user = result[0]
-
+        console.log('user =', user);
+        if (!user) {
+          return helper.response(res, null, 401, {
+            message: 'Your account is not registered '
+          })
+        }
         // Checking Verified
-        if (user.isVerified == 'false') {
+        if (user.isVerified === 'false') {
           return helper.response(res, null, 401, {
             message: 'You must verified your account first'
           })
@@ -145,16 +150,16 @@ const users = {
 
           const getToken = function (err, token) {
             user.token = token
-            if (user.roleid == admin) {
+            if (user.roleid === admin) {
               user.message = 'Welcome admin'
             } else {
-              console.log(err)
+              console.log('err token =', err)
               return helper.response(res, user, 200, null)
             }
           }
 
           jwt.sign(payload, secret, option, getToken)
-          console.log(err)
+          console.log('err bcrypt =', err)
         })
       })
       .catch(err => {
@@ -169,11 +174,11 @@ const users = {
     // JWT Verify
     jwt.verify(token, process.env.SECRET_KEY, function (err, decoded) {
       if (err) {
-        if (err.name == 'JsonWebTokenError') {
+        if (err.name === 'JsonWebTokenError') {
           return helper.response(res, null, 401, {
             message: 'invalid token'
           })
-        } else if (err.name == 'TokenExpiredError') {
+        } else if (err.name === 'TokenExpiredError') {
           return helper.response(res, null, 401, {
             message: 'token expired'
           })
@@ -188,7 +193,7 @@ const users = {
       modelUser.updateUser(loadIdUser, data)
         .then((result) => {
           const resultUpdateUser = result
-          if (resultUpdateUser.affectedRows == 0) {
+          if (resultUpdateUser.affectedRows === 0) {
             helper.reject(res, resultUpdateUser, 404, {
               message: 'id not found, can\'t update data'
             })
