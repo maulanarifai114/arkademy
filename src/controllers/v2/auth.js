@@ -75,11 +75,11 @@ const users = {
                   message: 'success register, check your email now'
                 }, 201, null)
               })
-              .catch((err) => {
-                console.log(err)
-              })
           });
         })
+      })
+      .catch((err) => {
+        console.log(err)
       })
 
   },
