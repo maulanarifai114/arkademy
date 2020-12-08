@@ -139,10 +139,6 @@ export default {
 
 /* Media Medium >768 - <991 */
 @media (max-width: 991px) {
-  /* .mask {
-    overflow: hidden;
-  } */
-
   .title {
     margin: 50px 0 0 20px;
   }
@@ -188,9 +184,9 @@ export default {
 
 /* Media Extra Small <567 */
 @media (max-width: 566px) {
-  /* .mask {
+  .mask {
     overflow: hidden;
-  } */
+  }
 
   .phone-1 {
     left: -70px;
