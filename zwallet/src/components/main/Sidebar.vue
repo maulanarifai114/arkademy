@@ -3,28 +3,28 @@
     <aside class="col-menu">
       <div class="menu">
 
-        <router-link to="/home/dashboard">
+        <router-link to="/home/dashboard" tag="div">
           <section class="menu-row">
             <img src="../../assets/home/dashboard-inactive.svg" alt="Dashboard">
-            <p class="menu-abjad-inactive">Dashboard</p>
+            <p class="menu-abjad-inactive menu-abjad-active">Dashboard</p>
           </section>
         </router-link>
 
-        <router-link to="/home/transfer">
+        <router-link to="/home/transfer" tag="div">
           <section class="menu-row">
             <img src="../../assets/home/transfer-inactive.svg" alt="Transfer">
             <p class="menu-abjad-inactive">Transfer</p>
           </section>
         </router-link>
 
-        <router-link to="/home/topup">
+        <router-link to="/home/topup" tag="div">
           <section class="menu-row">
             <img src="../../assets/home/topup-inactive.svg" alt="Top Up">
             <p class="menu-abjad-inactive">Top Up</p>
           </section>
         </router-link>
 
-        <router-link to="/home/profile">
+        <router-link to="/home/profile" tag="div">
           <section class="menu-row">
             <img src="../../assets/home/profile-inactive.svg" alt="Profile">
             <p class="menu-abjad-inactive">Profile</p>
@@ -51,9 +51,10 @@ export default {
 
 <style lang="scss" scoped>
 
-// .col-lg-3 {
-//   padding: 0;
-// }
+.col-lg-3 {
+  padding: 0;
+}
+
 .col-menu {
     padding: 0;
     width: 100%;
@@ -62,7 +63,7 @@ export default {
 }
 
 .menu {
-    width: 100%;
+    width: calc(100% - 15px);
     height: 100%;
     border-radius: 25px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);

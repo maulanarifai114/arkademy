@@ -141,10 +141,10 @@
                 and it’s suitable for you who is bussy with their bussiness and must transfer money to another person
                 aut there. Just try this app and see the power!”
             </p>
-            <div class="container-arrow a-left d-none d-sm-block">
+            <div class="container-arrow a-left d-none d-sm-flex">
                 <img src="../../assets/landing/arrow-left.svg" alt="left">
             </div>
-            <div class="container-arrow a-right d-none d-sm-block">
+            <div class="container-arrow a-right d-none d-sm-flex">
                 <img src="../../assets/landing/arrow-right.svg" alt="right">
             </div>
         </div>
@@ -474,7 +474,6 @@ border: 0;
     align-items: center;
     position: absolute;
     box-shadow: 0 5px 70px rgba(197, 197, 197, 0.15);
-
 }
 
 .container-arrow img {
@@ -513,6 +512,10 @@ border: 0;
 
     .box p {
         margin-bottom: 40px;
+    }
+
+    .box-features {
+        height: fit-content;
     }
 }
 

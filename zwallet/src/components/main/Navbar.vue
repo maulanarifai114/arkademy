@@ -116,13 +116,14 @@ export default {
 }
 
 .name {
-    font-family: 'Nunito Sans';
-    font-size: 18px;
+    font-family: Nunito Sans;
+    font-size: 16px;
     font-style: normal;
     font-weight: 700;
-    line-height: 31px;
+    line-height: 22px;
     letter-spacing: 0em;
     text-align: left;
+    margin-bottom: 9px;
 }
 
 .phone {
