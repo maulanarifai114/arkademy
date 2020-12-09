@@ -1,44 +1,141 @@
 <template>
   <div>
-    <header>
-      <h2 class="login-p1">
-        Start Accessing Banking Needs <br>
-        With All Devices and All Platforms <br>
-        With 30.000+ Users
-      </h2>
-      <p class="login-p2">
-        Transfering money is eassier than ever, you can access <br>
-        Zwallet wherever you are. Desktop, laptop, mobile phone? <br>
-        we cover all of that for you!
-      </p>
-    </header>
-    <form>
-      <label class="login-email" for="email">
-        <img src="../../assets/auth/mail-inactive.svg" alt="" class="login-icon">
-        <input type="email" class="form-email" placeholder="Enter your e-mail" id="email">
+    <Header
+      p1="Start Accessing Banking Needs
+          With All Devices and All Platforms
+          With 30.000+ Users"
+      p2="Transfering money is eassier than ever, you can access
+          Zwallet wherever you are. Desktop, laptop, mobile phone?
+          we cover all of that for you!"
+    />
+
+    <form @submit.prevent="">
+
+      <label
+        class="login-email"
+        :class="{
+          'valid': isFocused,
+          'invalid': isInvalid
+        }"
+        for="email">
+          <img
+            src="../../assets/auth/mail-inactive.svg"
+            alt="icon"
+            class="login-icon"
+            v-if="isFocused === false && isInvalid === false">
+          <img
+            src="../../assets/auth/mail-active.svg"
+            alt="icon"
+            class="login-icon"
+            v-if="isFocused === true">
+          <img
+            src="../../assets/auth/mail-error.svg"
+            alt="icon"
+            class="login-icon"
+            v-if="isInvalid === true">
+          <input
+            @focus="isFocused=true, isInvalid = false"
+            @blur="email !== '' ? (isInvalid = false, isFocused=true) : (isFocused=false, isInvalid = true)"
+            v-model="email"
+            type="email"
+            class="form-email"
+            placeholder="Enter your e-mail"
+            id="email"
+            required>
       </label>
-      <label class="login-pass" for="password">
-        <img src="../../assets/auth/lock-inactive.svg" alt="" class="login-icon">
-        <input type="password" class="form-pass" placeholder="Enter your password" id="password">
-        <img src="../../assets/auth/eye-crossed.svg" alt="" class="login-icon-eye">
+
+      <label
+        :class="{'valid': isFocused, 'invalid': isInvalid}"
+        class="login-pass"
+        for="password">
+        <img
+            src="../../assets/auth/lock-inactive.svg"
+            alt="icon"
+            class="login-icon"
+            v-if="isFocused === false && isInvalid === false">
+          <img
+            src="../../assets/auth/lock-active.svg"
+            alt="icon"
+            class="login-icon"
+            v-if="isFocused === true">
+          <img
+            src="../../assets/auth/lock-error.svg"
+            alt="icon"
+            class="login-icon"
+            v-if="isInvalid === true && isFocused === false">
+        <input
+          @focus="isFocused=true, isInvalid = false"
+          @blur="password !== '' ? (isInvalid = false, isFocused=true) : (isFocused=false, isInvalid = true)"
+          v-model="password"
+          :type=visible
+          class="form-pass"
+          placeholder="Enter your password"
+          id="password"
+          required>
+        <img
+          src="../../assets/auth/eye-crossed.svg"
+          alt="icon"
+          class="login-icon-eye ml-auto"
+          @click="visible === 'password' ? hidePassword() : showPassword()"
+        >
       </label>
-    </form>
-    <router-link to="/auth/reset" class="forgot">Forgot password</router-link>
-    <router-link to="/home">
-    <button type="submit" class="login-btn">Login</button>
-    </router-link>
-    <p class="sign-up">
+
+      <div>
+        <router-link to="/auth/reset" class="forgot">
+          Forgot password
+        </router-link>
+      </div>
+
+      <div>
+        <p
+          :class="isInvalid === false ? 'p-invalid p-invalid-inactive' : 'p-invalid error-z-c'">
+          Email or Password Invalid
+        </p>
+      </div>
+
+      <router-link to="/home">
+        <button
+          type="submit"
+          class="this-btn"
+          :class="{'valid-btn': isFocused}">
+          Login
+        </button>
+      </router-link>
+
+      <p class="route-link">
         Don’t have an account? Let’s<router-link to="/auth/signup"> Sign Up</router-link>
-    </p>
+      </p>
+    </form>
+
   </div>
 </template>
 
 <script>
+import Header from '../../components/auth/Header'
+
 export default {
   name: 'Login',
   data () {
     return {
-      email: 'Ini Login'
+      visible: 'password',
+      isFocused: false,
+      isInvalid: false,
+      emailInactive: 'inactive',
+      emailActive: 'active',
+      emailError: 'error',
+      email: '',
+      password: ''
+    }
+  },
+  components: {
+    Header
+  },
+  methods: {
+    hidePassword () {
+      this.visible = 'text'
+    },
+    showPassword () {
+      this.visible = 'password'
     }
   }
 }
@@ -47,44 +144,57 @@ export default {
 <style scoped>
 
 input {
-  background-color: rgb(210, 255, 159);
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.login {
-    box-sizing: border-box;
-    padding: 120px 50px 0 50px;
+body {
+  position: relative;
 }
 
-/* Login Paragraf */
-.login-p1 {
-    font-family: Nunito Sans;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 33px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #3A3D42;
+div .p-invalid {
+  width: 430px;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.login-p2 {
-    font-weight: 400;
-    line-height: 30px;
-    margin: 30px 0 0 0;
-    color: rgba(58, 61, 66, 0.6);
+.p-invalid {
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: 0em;
+  margin: 0;
+  transition: .3s;
 }
 
-/* End Login Paragraf */
+.p-invalid-inactive {
+  color: rgba(0, 0, 0, 0) !important;
+}
 
 /* Form Email */
 .login-email {
-    width: 430px;
-    height: 42px;
-    margin: 60px 0 0 0;
-    /* border-bottom: 1.5px solid #FF5B37; */
-    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
-    display: flex;
-    padding: 0 0 0 0;
+  width: 430px !important;
+  height: 42px !important;
+  margin: 60px 0 0 0 !important;
+  border-bottom: 1.5px solid rgba(169, 169, 169, 0.6) ;
+  display: flex !important;
+  padding: 0 0 0 0 !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+
+.valid {
+  border-bottom: 1.5px solid #6379F4 !important;
+}
+
+.valid-btn {
+  background-color:  #6379F4 !important;
+}
+
+.invalid {
+  border-bottom: 1.5px solid #FF5B37 !important;
 }
 
 .login-icon {
@@ -102,7 +212,15 @@ input {
 }
 
 .form-email::placeholder {
-    color: #a9a9a999;
+  /* //styleName: Regular (Label); */
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #a9a9a999;
 }
 
 .form-email:focus {
@@ -115,17 +233,18 @@ input {
 .login-pass {
     width: 430px;
     height: 42px;
-    margin: 74px 0 20px 0;
+    margin: 74px 0 0 0 !important;
     /* border-bottom: 1.5px solid #FF5B37; */
     border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
     display: flex;
     padding: 0 0 0 0;
+    /* position: relative; */
 }
 
 .login-icon-eye {
-    margin: 0 0 0 66px;
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 .form-pass {
@@ -136,7 +255,14 @@ input {
 }
 
 .form-pass::placeholder {
-    color: #a9a9a999;
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #a9a9a999;
 }
 
 .form-pass:focus {
@@ -146,77 +272,70 @@ input {
 /* End Form Password */
 
 /* Forgot */
+div .forgot {
+  margin: 20px 0 0 0;
+  width: 430px;
+  display: flex;
+  flex-direction: row-reverse;
+  transition: .3s;
+}
+
 .forgot {
-    font-family: Nunito Sans;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: center;
-    color: rgba(58, 61, 66, 0.8);
-    width: 430px;
-    display: flex;
-    flex-direction: row-reverse;
-    transition: .3s;
+  width: auto;
+  font-family: Nunito Sans;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(58, 61, 66, 0.8);
 }
 
 .forgot:hover {
-    text-decoration: none;
-    color: #6379F4;
+  text-decoration: none;
+  color: #6379F4;
 }
 
 /* End Forgot */
 
-/* Invalid */
-.invalid {
-    font-family: Nunito Sans;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 32px;
-    letter-spacing: 0em;
-    text-align: center;
-    margin: 30px 0 28px 0;
-    color: #FF5B37;
-    width: 430px;
-}
-
-/* EndInvalid */
-
 /* Login Button */
-.login-btn {
-    margin: 90px 0 0 0;
-    border-radius: 12px;
-    background-color: #6379f4;
-    color: #ffffff;
-    border: 0;
-    outline: 0;
-    width: 430px;
-    height: 57px;
-    /* //styleName: Bold (Button); */
-    font-family: Nunito Sans;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 25px;
-    letter-spacing: 0em;
-    text-align: center;
-    transition: .3s;
+.this-btn {
+  /* margin: 90px 0 0 0; */
+  border-radius: 12px;
+  /* background-color: #6379f4; */
+  background-color: #dadada;
+  color: #ffffff;
+  border: 0;
+  outline: 0;
+  width: 430px;
+  height: 57px;
+  /* //styleName: Bold (Button); */
+  font-family: Nunito Sans;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 0em;
+  text-align: center;
+  transition: .3s;
 }
-.login-btn:hover {
-  background-color: rgba(99, 121, 244, 0.8);
+.this-btn:hover {
+  background-color: #6379f4;
 }
-.login-btn:focus {
-    outline: 0;
-    border: 0;
+.this-btn:focus {
+  outline: 0;
+  border: 0;
+}
 
+.active-btn {
+  background-color: #6379f4;
 }
 
 /* End Login Button */
 
 /* Sign Up */
-.sign-up {
+.route-link {
     width: 430px;
     margin: 40px 0 70px 0;
     display: flex;
@@ -232,7 +351,7 @@ input {
 
 }
 
-.sign-up a {
+.route-link a {
     font-family: Nunito Sans;
     font-size: 16px;
     font-style: normal;
@@ -246,89 +365,18 @@ input {
     transition: .3s;
 }
 
-.sign-up a:hover {
+.route-link a:hover {
     color: rgba(99, 121, 244, 0.8);
 }
 
 /* End Sign Up */
 
 /* End Login */
-/* Media Large >992 - <1199 */
-@media (max-width: 1199px) {
-    .phone-1 {
-        margin: 0 0 0 0px;
-        position: relative;
-        left: -15px;
-    }
-
-    .phone-2 {
-        position: absolute;
-        left: 135px;
-    }
-
-    .mask-paragraph {
-        margin: 12px 0 0 40px;
-        width: 80%;
-    }
-
-    .mask-p1 {
-        font-size: 18px;
-    }
-
-    .mask-p2 {
-        font-size: 13px;
-    }
-}
-
-/* Media Medium >768 - <991 */
-@media (max-width: 991px) {
-    .mask {
-      overflow: hidden;
-    }
-    .title {
-        margin: 50px 0 0 20px;
-    }
-
-    .phone-1 {
-        left: -80px;
-    }
-
-    .phone-2 {
-        position: absolute;
-        top: 0px;
-        left: 75px;
-    }
-
-    .mask-paragraph {
-        margin: 12px 0 0 20px;
-        width: 80%;
-    }
-}
 
 /* Media Small >=576 - <767  Small */
 @media (max-width: 767px) {
-    .title {
-        margin-left: 40px;
-    }
-
-    .mask {
-        min-height: auto;
-    }
-
-    .phone-1 {
-        left: 50px;
-    }
-
-    .phone-2 {
-        left: 150px;
-    }
-
-    .login {
-        padding: 80px 50px 0 50px;
-    }
-
     .login-email {
-        width: auto;
+        width: auto !important;
     }
 
     .login-pass {
@@ -343,32 +391,17 @@ input {
         width: 100%;
     }
 
-    .login-btn {
+    .this-btn {
         width: 100%;
     }
 
-    .sign-up {
+    .route-link {
         width: 100%;
     }
 }
 
 /* Media Extra Small <567 */
 @media (max-width: 566px) {
-    .mask {
-        overflow: hidden;
-    }
-
-    .phone-1 {
-        left: -70px;
-    }
-
-    .phone-2 {
-        left: 70px;
-    }
-
-    .login {
-        padding: 80px 40px 0 40px;
-    }
 
     .login-email {
         width: auto;
@@ -378,7 +411,7 @@ input {
         width: auto;
     }
 
-    .login-btn {
+    .this-btn {
         width: 100%;
     }
 
@@ -399,12 +432,12 @@ input {
         width: auto;
     }
 
-    .sign-up {
+    .route-link {
         width: auto;
         font-size: 14px;
     }
 
-    .sign-up a {
+    .route-link a {
         font-size: 14px;
     }
 
