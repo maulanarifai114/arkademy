@@ -161,43 +161,20 @@ export default {
 
 /* Media Small >=576 - <767  Small */
 @media (max-width: 767px) {
-  .title {
-    margin-left: 40px;
-  }
-
   .mask {
-    min-height: auto;
-  }
-
-  .phone-1 {
-    left: 50px;
-  }
-
-  .phone-2 {
-    left: 150px;
+    display: none;
   }
 
   .login {
-    padding: 80px 50px 0 50px;
+    padding: 80px 50px;
   }
 }
 
 /* Media Extra Small <567 */
 @media (max-width: 566px) {
-  .mask {
-    overflow: hidden;
-  }
-
-  .phone-1 {
-    left: -70px;
-  }
-
-  .phone-2 {
-    left: 70px;
-  }
-
   .login {
-    padding: 80px 40px 0 40px;
+    padding: 80px 40px;
   }
+
 }
 </style>

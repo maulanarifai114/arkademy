@@ -2,25 +2,25 @@
   <div>
     <header>
       <h2 class="login-p1">
-          Start Accessing Banking Needs <br>
-          With All Devices and All Platforms <br>
-          With 30.000+ Users
+        Start Accessing Banking Needs <br>
+        With All Devices and All Platforms <br>
+        With 30.000+ Users
       </h2>
       <p class="login-p2">
-          Transfering money is eassier than ever, you can access <br>
-          Zwallet wherever you are. Desktop, laptop, mobile phone? <br>
-          we cover all of that for you!
+        Transfering money is eassier than ever, you can access <br>
+        Zwallet wherever you are. Desktop, laptop, mobile phone? <br>
+        we cover all of that for you!
       </p>
     </header>
     <form>
       <label class="login-email" for="email">
-          <img src="../../assets/auth/mail-inactive.svg" alt="" class="login-icon">
-          <input type="email" class="form-email" placeholder="Enter your e-mail" id="email">
+        <img src="../../assets/auth/mail-inactive.svg" alt="" class="login-icon">
+        <input type="email" class="form-email" placeholder="Enter your e-mail" id="email">
       </label>
       <label class="login-pass" for="password">
-          <img src="../../assets/auth/lock-inactive.svg" alt="" class="login-icon">
-          <input type="password" class="form-pass" placeholder="Enter your password" id="password">
-          <img src="../../assets/auth/eye-crossed.svg" alt="" class="login-icon-eye">
+        <img src="../../assets/auth/lock-inactive.svg" alt="" class="login-icon">
+        <input type="password" class="form-pass" placeholder="Enter your password" id="password">
+        <img src="../../assets/auth/eye-crossed.svg" alt="" class="login-icon-eye">
       </label>
     </form>
     <router-link to="/auth/reset" class="forgot">Forgot password</router-link>
@@ -36,7 +36,7 @@
 <script>
 export default {
   name: 'Login',
-  data: function () {
+  data () {
     return {
       email: 'Ini Login'
     }
@@ -47,7 +47,7 @@ export default {
 <style scoped>
 
 input {
-  background-color: rgba(0, 0, 0, 0);
+  background-color: rgb(210, 255, 159);
 }
 
 .login {
