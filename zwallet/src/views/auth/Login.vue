@@ -103,7 +103,7 @@
       </router-link>
 
       <p class="route-link">
-        Don’t have an account? Let’s<router-link to="/auth/signup"> Sign Up</router-link>
+        Don’t have an account? Let’s <router-link to="/auth/signup"> Sign Up</router-link>
       </p>
     </form>
 
@@ -191,6 +191,10 @@ div .p-invalid {
 
 .valid-btn {
   background-color:  #6379F4 !important;
+}
+
+.valid-btn:hover {
+  background-color:  rgba(99, 121, 244, 0.8) !important;
 }
 
 .invalid {
@@ -328,10 +332,6 @@ div .forgot {
   border: 0;
 }
 
-.active-btn {
-  background-color: #6379f4;
-}
-
 /* End Login Button */
 
 /* Sign Up */
@@ -363,6 +363,7 @@ div .forgot {
     margin: 0 0 0 3px;
     color: #6379F4;
     transition: .3s;
+    cursor: pointer;
 }
 
 .route-link a:hover {
@@ -375,29 +376,35 @@ div .forgot {
 
 /* Media Small >=576 - <767  Small */
 @media (max-width: 767px) {
-    .login-email {
-        width: auto !important;
-    }
 
-    .login-pass {
-        width: auto;
-    }
+  div .p-invalid {
+    width: 100%;
+  }
 
-    .login-icon-eye {
-        margin-left: auto;
-    }
+  .login-email {
+    width: auto !important;
+  }
 
-    .forgot {
-        width: 100%;
-    }
+  .login-pass {
+    width: auto;
+  }
 
-    .this-btn {
-        width: 100%;
-    }
+  .login-icon-eye {
+    margin-left: auto;
+  }
 
-    .route-link {
-        width: 100%;
-    }
+  div .forgot {
+    width: 100%;
+  }
+
+  .this-btn {
+    width: 100%;
+  }
+
+  .route-link {
+    width: 100%;
+    margin: 40px 0 0 0;
+  }
 }
 
 /* Media Extra Small <567 */
@@ -444,6 +451,10 @@ div .forgot {
     .invalid {
         width: 100%;
         font-size: 15px;
+    }
+
+    .p-invalid {
+      font-size: 14px;
     }
 }
 </style>
