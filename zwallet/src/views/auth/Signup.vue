@@ -1,48 +1,81 @@
 <template>
   <div>
-    <header>
-      <h2 class="login-p1">
-          Start Accessing Banking Needs <br>
-          With All Devices and All Platforms <br>
-          With 30.000+ Users
-      </h2>
-      <p class="login-p2">
-          Transfering money is eassier than ever, you can access <br>
-          Zwallet wherever you are. Desktop, laptop, mobile phone? <br>
-          we cover all of that for you!
-      </p>
-    </header>
-    <form>
-      <label class="login-person" for="person">
+    <Header
+      p1="Start Accessing Banking Needs
+          With All Devices and All Platforms
+          With 30.000+ Users"
+      p2="Transfering money is eassier than ever, you can access
+          Zwallet wherever you are. Desktop, laptop, mobile phone?
+          we cover all of that for you!"
+    />
+
+    <form @submit.prevent="register">
+
+      <label class="login-input" for="person">
           <img src="../../assets/auth/person-inactive.svg" alt="" class="login-icon">
-          <input type="email" class="form-email" placeholder="Enter your username" id="person">
+          <input v-model="username" type="text" class="form-email" placeholder="Enter your username" id="person">
       </label>
-      <label class="login-email" for="mail">
+
+      <label class="login-input" for="mail">
           <img src="../../assets/auth/mail-inactive.svg" alt="" class="login-icon">
-          <input type="email" class="form-email" placeholder="Enter your e-mail" id="mail">
+          <input v-model="email" type="email" class="form-email" placeholder="Enter your e-mail" id="mail">
       </label>
-      <label class="login-pass" for="lock">
+
+      <label class="login-input" for="lock">
           <img src="../../assets/auth/lock-inactive.svg" alt="" class="login-icon">
-          <input type="password" class="form-pass" placeholder="Enter your password" id="lock">
+          <input v-model="password" type="password" class="form-pass" placeholder="Enter your password" id="lock">
           <img src="../../assets/auth/eye-crossed.svg" alt="" class="login-icon-eye">
       </label>
+
+      <button type="submit" class="login-btn">Sign Up</button>
     </form>
-  <router-link to="/auth/pin">
-    <button type="submit" class="login-btn">Sign Up</button>
-  </router-link>
-  <p class="sign-up">
-      <!-- Already have an account? Let’s <a href="#"> Login</a> -->
-      Already have an account? Let’s <router-link to="/auth/login">Login</router-link>
-  </p>
+
+    <!-- <router-link to="/auth/pin"> -->
+    <!-- </router-link> -->
+
+    <p class="route-link">
+        Already have an account? Let’s <router-link to="/auth/login">Login</router-link>
+    </p>
+
   </div>
 </template>
 
 <script>
+import Header from '../../components/auth/Header'
+import { mapActions } from 'vuex'
+
 export default {
   name: 'SignUp',
   data: function () {
     return {
-      password: 'Ini SignUp'
+      username: '',
+      email: '',
+      password: ''
+    }
+  },
+  components: {
+    Header
+  },
+  methods: {
+    ...mapActions(['REGISTER']),
+    register () {
+      const user = {
+        email: this.email,
+        password: this.password,
+        username: this.username
+      }
+      if (this.password === '' || this.username === '' || this.email === '') {
+        return alert('Form is Empty')
+      } else {
+        console.log('register dipanggil')
+        this.REGISTER(user)
+          .then((res) => {
+            this.$router.push('/auth/pin')
+          })
+          .catch((err) => {
+            console.log('error in signup', err)
+          })
+      }
     }
   }
 }
@@ -54,22 +87,6 @@ input {
   background-color: rgba(0, 0, 0, 0);
 }
 /* Start Login */
-.login {
-    box-sizing: border-box;
-    padding: 120px 50px 0 50px;
-}
-
-/* Login Paragraf */
-.login-p1 {
-    font-family: Nunito Sans;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 33px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: #3A3D42;
-}
 
 .login-p2 {
     font-weight: 400;
@@ -81,7 +98,7 @@ input {
 /* End Login Paragraf */
 
 /* Form Username */
-.login-person {
+.login-input {
     width: 430px;
     height: 42px;
     margin: 60px 0 0 0;
@@ -94,16 +111,6 @@ input {
 /* End Form Username */
 
 /* Form Email */
-
-.login-email {
-    width: 430px;
-    height: 42px;
-    margin: 60px 0 0 0;
-    /* border-bottom: 1.5px solid #6379F4; */
-    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
-    display: flex;
-    padding: 0 0 0 0;
-}
 
 .login-icon {
     margin: 0 16px 0 0;
@@ -130,15 +137,6 @@ input {
 /* End Form Email */
 
 /* Form Password */
-.login-pass {
-    width: 430px;
-    height: 42px;
-    margin: 74px 0 20px 0;
-    /* border-bottom: 1.5px solid #6379F4; */
-    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
-    display: flex;
-    padding: 0 0 0 0;
-}
 
 .login-icon-eye {
     margin: 0 0 0 66px;
@@ -237,23 +235,22 @@ input {
 /* End Login Button */
 
 /* Sign Up */
-.sign-up {
-    width: 430px;
-    margin: 40px 0 70px 0;
-    display: flex;
-    justify-content: center;
-    /* //styleName: Regular (Label); */
-    font-family: Nunito Sans;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 23px;
-    letter-spacing: 0em;
-    text-align: center;
+.route-link {
+  width: 430px;
+  margin: 40px 0 70px 0;
+  display: flex;
+  justify-content: center;
 
+  font-family: Nunito Sans;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 23px;
+  letter-spacing: 0em;
+  text-align: center;
 }
 
-.sign-up a {
+.route-link a {
     font-family: Nunito Sans;
     font-size: 16px;
     font-style: normal;
@@ -267,7 +264,7 @@ input {
     transition: .3s;
 }
 
-.sign-up a:hover {
+.route-link a:hover {
     color: rgba(99, 121, 244, 0.8);
 }
 
@@ -346,15 +343,7 @@ input {
         padding: 80px 50px 0 50px;
     }
 
-    .login-person {
-        width: auto;
-    }
-
-    .login-email {
-        width: auto;
-    }
-
-    .login-pass {
+    .login-input {
         width: auto;
     }
 
@@ -370,7 +359,7 @@ input {
         width: 100%;
     }
 
-    .sign-up {
+    .route-link {
         width: 100%;
     }
 }
@@ -391,14 +380,6 @@ input {
 
     .login {
         padding: 80px 40px 0 40px;
-    }
-
-    .login-email {
-        width: auto;
-    }
-
-    .login-pass {
-        width: auto;
     }
 
     .login-btn {
@@ -422,12 +403,12 @@ input {
         width: auto;
     }
 
-    .sign-up {
+    .route-link {
         width: auto;
         font-size: 14px;
     }
 
-    .sign-up a {
+    .route-link a {
         font-size: 14px;
     }
 

@@ -9,7 +9,7 @@
           we cover all of that for you!"
     />
 
-    <form @submit.prevent="">
+    <form @submit.prevent="login">
 
       <label
         class="login-email"
@@ -32,7 +32,7 @@
             src="../../assets/auth/mail-error.svg"
             alt="icon"
             class="login-icon"
-            v-if="isInvalid === true">
+            v-if="isInvalid === true && isFocused === false">
           <input
             @focus="isFocused=true, isInvalid = false"
             @blur="email !== '' ? (isInvalid = false, isFocused=true) : (isFocused=false, isInvalid = true)"
@@ -93,14 +93,15 @@
         </p>
       </div>
 
-      <router-link to="/home">
+      <!-- <router-link to="/home"> -->
         <button
           type="submit"
           class="this-btn"
-          :class="{'valid-btn': isFocused}">
+          :class="{'valid-btn': isFocused}"
+        >
           Login
         </button>
-      </router-link>
+      <!-- </router-link> -->
 
       <p class="route-link">
         Don’t have an account? Let’s <router-link to="/auth/signup"> Sign Up</router-link>
@@ -112,6 +113,7 @@
 
 <script>
 import Header from '../../components/auth/Header'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Login',
@@ -131,11 +133,28 @@ export default {
     Header
   },
   methods: {
+    ...mapActions(['LOGIN']),
     hidePassword () {
       this.visible = 'text'
     },
     showPassword () {
       this.visible = 'password'
+    },
+    login () {
+      console.log('login dipanggil')
+      const user = {
+        email: this.email,
+        password: this.password
+      }
+      this.LOGIN(user)
+        .then((res) => {
+          this.$router.push('/home')
+        })
+        .catch((err) => {
+          console.log(err)
+          this.isInvalid = true
+          this.isFocused = false
+        })
     }
   }
 }
@@ -235,14 +254,13 @@ div .p-invalid {
 
 /* Form Password */
 .login-pass {
-    width: 430px;
-    height: 42px;
-    margin: 74px 0 0 0 !important;
-    /* border-bottom: 1.5px solid #FF5B37; */
-    border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
-    display: flex;
-    padding: 0 0 0 0;
-    /* position: relative; */
+  width: 430px;
+  height: 42px;
+  margin: 60px 0 0 0 !important;
+  border-bottom: 1.5px solid rgba(169, 169, 169, 0.6);
+  display: flex;
+  padding: 0 0 0 0;
+  background-color: rgba(0, 0, 0, 0) !important;
 }
 
 .login-icon-eye {
@@ -252,10 +270,10 @@ div .p-invalid {
 }
 
 .form-pass {
-    border: 0;
-    outline: 0;
-    width: 300px;
-    height: 24px;
+  border: 0;
+  outline: 0;
+  width: 300px;
+  height: 24px;
 }
 
 .form-pass::placeholder {
@@ -410,29 +428,12 @@ div .forgot {
 /* Media Extra Small <567 */
 @media (max-width: 566px) {
 
-    .login-email {
-        width: auto;
-    }
-
-    .login-pass {
-        width: auto;
-    }
-
     .this-btn {
         width: 100%;
     }
 
     .login-icon-eye {
         margin-left: auto;
-    }
-
-    .login-p1 {
-        font-size: 20px;
-    }
-
-    .login-p2 {
-        font-size: 12px;
-        line-height: 1.5em;
     }
 
     .forgot {
